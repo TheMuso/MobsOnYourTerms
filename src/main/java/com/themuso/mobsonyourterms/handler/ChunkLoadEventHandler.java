@@ -10,7 +10,7 @@ import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.event.world.ChunkEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
-public class ChunkLoaderEventHandler 
+public class ChunkLoadEventHandler 
 {
 	@SubscribeEvent
 	public void onChunkLoad(ChunkEvent.Load event)

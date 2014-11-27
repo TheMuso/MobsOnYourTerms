@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 import net.minecraftforge.common.MinecraftForge;
 
-import com.themuso.mobsonyourterms.handler.ChunkLoaderEventHandler;
+import com.themuso.mobsonyourterms.handler.ChunkLoadEventHandler;
 import com.themuso.mobsonyourterms.handler.ConfigurationHandler;
 import com.themuso.mobsonyourterms.reference.MobSettings;
 import com.themuso.mobsonyourterms.reference.Reference;
@@ -27,7 +27,7 @@ public class MobsOnYourTerms
 	{
 		ConfigurationHandler.init(event.suggestedConfigurationFile));
 
-		 ChunkLoaderEventHandler chunkHandler = new  ChunkLoaderEventHandler();
+		 ChunkLoadEventHandler chunkEventHandler = new ChunkLoadEventHandler();
 		 MinecraftForge.EVENT_BUS.register(chunkHandler);
 	}
 	
