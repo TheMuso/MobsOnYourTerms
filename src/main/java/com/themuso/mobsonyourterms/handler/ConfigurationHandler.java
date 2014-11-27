@@ -40,5 +40,10 @@ public class ConfigurationHandler {
 		Settings.General.staffCooldown = Configuration.getInt("staffCooldown", Configuration.CATEGORY_GENERAL, 0, 0, 30, "THe amount of time the player must wait before the staff can be used to spawn another mob.");
 		Settings.General.mobsOnlySpawnableAtNight = Configuration.getBoolean("mobsOnlySpawnableAtNight", Configuration.CATEGORY_GENERAL, true, "SHould mobs only be spawnable with the staff at night.");
 		Settings.General.registerMobSpawnerRecipes = Configuration.getBoolean("registerMobSpawnerRecipes", Configuration.CATEGORY_GENERAL, true, "Should recipes to make mob spawners get registered.");
+
+		// Mob spawner settings
+		Settings.Spawner.changeMobSpawnerBehavior = Configuration.getBoolean("changeMobSpanwerBehavior, "Mob Spawner Settings", true, "Whether mob spawner characteristics are changed.");
+		Settings.Spawner.activatingRangeFromPlayer = Configuration.getInt("activatingRangeFromPlayer", Mob Spawner Settings", 4, 2, 32, "The distance in blocks a player needs to bbe from the spawner to activate it.");
+		Settings.Spawner.spawnRange = Configuration.getInt("spawnRange", "Mob Spawner Settings", 8, 2, 32, "The range in blocks where mobs can be spawned.");
 	}
 }
