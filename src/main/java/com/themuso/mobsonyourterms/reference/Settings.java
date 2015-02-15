@@ -1,7 +1,9 @@
 package com.themuso.mobsonyourterms.reference;
 
-public class Settings {
-	public static class General {
+public class Settings
+{
+	public static class General
+	{
 		public static boolean doMobSpawningGameRule;
 		public static int mobSpawnRuleEnableXPMultiply;
 		public static boolean useIndividualMobSpawnSettings;
@@ -17,14 +19,17 @@ public class Settings {
 		public static int spawnRangeFromPlayerMaxNormal;
 		public static int spawnRangeFromPlayerMinHard;
 		public static int spawnRangeFromPlayerMaxHard;
-		public static boolean spawnMobsBehindPlayer;
+		public static boolean spawnMobsBehindPlayerEasy;
+		public static boolean spawnMobsBehindPlayerNormal;
+		public static boolean spawnMobsBehindPlayerHard;
 		public static int staffCooldown;
 		public static boolean mobsOnlySpawnableAtNight;
 		public static boolean registerMobSpawnerRecipes;
 
 	}
 
-	public static class Spawner {
+	public static class Spawner
+	{
 		public static boolean changeMobSpawnerBehavior;
 		public static int activatingRangeFromPlayer;
 		public static int spawnRange;

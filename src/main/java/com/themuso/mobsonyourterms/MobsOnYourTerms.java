@@ -1,12 +1,9 @@
 package com.themuso.mobsonyourterms;
 
-import java.util.HashMap;
-
 import net.minecraftforge.common.MinecraftForge;
 
 import com.themuso.mobsonyourterms.handler.ChunkLoadEventHandler;
 import com.themuso.mobsonyourterms.handler.ConfigurationHandler;
-import com.themuso.mobsonyourterms.reference.MobSettings;
 import com.themuso.mobsonyourterms.reference.Reference;
 
 import cpw.mods.fml.common.Mod;
@@ -20,15 +17,13 @@ public class MobsOnYourTerms
 	@Mod.Instance(Reference.MOD_ID)
 	public static MobsOnYourTerms instance;
 
-	public HashMap<String, MobSettings> mobList;
-
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
-		ConfigurationHandler.init(event.suggestedConfigurationFile));
+		ConfigurationHandler.init(event.getSuggestedConfigurationFile());
 
 		 ChunkLoadEventHandler chunkEventHandler = new ChunkLoadEventHandler();
-		 MinecraftForge.EVENT_BUS.register(chunkHandler);
+		 MinecraftForge.EVENT_BUS.register(chunkEventHandler);
 	}
 	
 	@Mod.EventHandler

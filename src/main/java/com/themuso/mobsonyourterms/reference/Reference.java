@@ -1,7 +1,8 @@
 package com.themuso.mobsonyourterms.reference;
 
-public class Reference {
-	public static final string MOD_ID = "MobsOnYourTerms";
-	public static final string MOD_NAME = "Mobs On Your Terms";
-	public static final string VERSION = "1.7.10-0.1";
+public class Reference
+{
+	public static final String MOD_ID = "MobsOnYourTerms";
+	public static final String MOD_NAME = "Mobs On Your Terms";
+	public static final String VERSION = "1.7.10-0.1";
 }

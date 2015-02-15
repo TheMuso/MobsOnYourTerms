@@ -15,12 +15,20 @@ public class MobSettings
 	public static int spawnRangeFromPlayerMaxNormal;
 	public static int spawnRangeFromPlayerMinHard;
 	public static int spawnRangeFromPlayerMaxHard;
-	public static boolean spawnMobsBehindPlayer;
+	public static boolean spawnMobsBehindPlayerEasy;
+	public static boolean spawnMobsBehindPlayerNormal;
+	public static boolean spawnMobsBehindPlayerHard;
+	public static boolean enableStaffCreationPrimaryItem;
 	public static String staffCreationPrimaryItem;
 	public static int staffCreationPrimaryItemAmount;
+	public static int staffCreationPrimaryItemLevels;
+	public static boolean enableStaffCreationSecondaryItem;
 	public static String staffCreationSecondaryItem;
 	public static int staffCreationSecondaryItemAmount;
-	public static boolean enableMobFragmentItem;
-	public static String staffSpawnedMobDropsItem;
+	public static int staffCreationSecondaryItemLevels;
+	public static boolean enableStaffFragmentItem;
+	public static boolean mobDropsStaffFragment;
+	public static String staffSpawnedMobDropsFragmentForEntity;
+	public static int staffSpawnedMobDropsFragmentFortune;
 	public static int staffCooldown;
 }

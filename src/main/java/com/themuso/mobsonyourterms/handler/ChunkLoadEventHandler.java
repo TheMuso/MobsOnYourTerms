@@ -8,6 +8,9 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityMobSpawner;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.event.world.ChunkEvent;
+
+import com.themuso.mobsonyourterms.reference.Settings;
+
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class ChunkLoadEventHandler 
@@ -15,16 +18,19 @@ public class ChunkLoadEventHandler
 	@SubscribeEvent
 	public void onChunkLoad(ChunkEvent.Load event)
 	{
-		Chunk chunk = event.getChunk();
-		Iterator iterator = chunk.chunkTileEntityMap.values().iterator();
-		
-		while (iterator.hasNext())
+		if (Settings.Spawner.changeMobSpawnerBehavior == true)
 		{
-			TileEntity tileentity = (TileEntity)iterator.next();
-			if (tileentity instanceof TileEntityMobSpawner)
+			Chunk chunk = event.getChunk();
+			Iterator iterator = chunk.chunkTileEntityMap.values().iterator();
+		
+			while (iterator.hasNext())
 			{
-				MobSpawnerBaseLogic spawnerlogic = ((TileEntityMobSpawner)tileentity).func_145881_a();
-				changeSpawnerPlayerRange(spawnerlogic);
+				TileEntity tileentity = (TileEntity)iterator.next();
+				if (tileentity instanceof TileEntityMobSpawner)
+				{
+					MobSpawnerBaseLogic spawnerlogic = ((TileEntityMobSpawner)tileentity).func_145881_a();
+					changeSpawnerPlayerRange(spawnerlogic);
+				}
 			}
 		}
 	}
@@ -40,7 +46,20 @@ public class ChunkLoadEventHandler
 				f.setAccessible(true);
 				try
 				{
-					f.set(spawnerlogic, 2);
+					f.set(spawnerlogic, Settings.Spawner.activatingRangeFromPlayer);
+				}
+				catch (Exception e)
+				{
+					System.out.println(e);
+				}
+			}
+
+			if (f.getName() == "spawnRange")
+			{
+				f.setAccessible(true);
+				try
+				{
+					f.set(spawnerlogic, Settings.Spawner.spawnRange);
 				}
 				catch (Exception e)
 				{
