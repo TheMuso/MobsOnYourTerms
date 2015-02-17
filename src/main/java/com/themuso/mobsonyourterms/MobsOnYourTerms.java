@@ -5,6 +5,7 @@ import net.minecraftforge.common.MinecraftForge;
 import com.themuso.mobsonyourterms.handler.ChunkLoadEventHandler;
 import com.themuso.mobsonyourterms.handler.ConfigurationHandler;
 import com.themuso.mobsonyourterms.reference.Reference;
+import com.themuso.mobsonyourterms.utility.LogHelper;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -24,17 +25,19 @@ public class MobsOnYourTerms
 
 		 ChunkLoadEventHandler chunkEventHandler = new ChunkLoadEventHandler();
 		 MinecraftForge.EVENT_BUS.register(chunkEventHandler);
+
+		LogHelper.info("Pre Init complete");
 	}
 	
 	@Mod.EventHandler
 	public void Init(FMLInitializationEvent event)
 	{
-		
+		LogHelper.info("Init complete");
 	}
 	
 	@Mod.EventHandler
 	public void postInit(FMLPostInitializationEvent event)
 	{
-		
+		LogHelper.info("Post Init complete");
 	}
 }
