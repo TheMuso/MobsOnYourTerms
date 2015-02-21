@@ -32,13 +32,13 @@ public class MobsOnYourTerms
 	@Mod.EventHandler
 	public void Init(FMLInitializationEvent event)
 	{
-		ConfigurationHandler.validate();
 		LogHelper.info("Init complete");
 	}
 	
 	@Mod.EventHandler
 	public void postInit(FMLPostInitializationEvent event)
 	{
+		ConfigurationHandler.validate();
 		LogHelper.info("Post Init complete");
 	}
 }
