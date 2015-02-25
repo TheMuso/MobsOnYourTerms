@@ -576,6 +576,36 @@ public class ConfigurationHandler
 					mobList.remove(key);
 					mobList.put(key, config);
 				}
+
+				// Duplicate primary/secondary item checking.
+				Iterator subIterator = mobList.values().iterator();
+				String key = getKey(config);
+
+				while (subIterator.hasNext())
+				{
+					MobSettings subConfig = (MobSettings)subIterator.next();
+					String subKey = getKey(subConfig);
+
+					if (key != subKey)
+					{
+						if (config.staffCreationPrimaryItem == subConfig.staffCreationPrimaryItem)
+						{
+							LogHelper.warn("The primary staff creation item for mob " + key + " is the same as the primary staff creation item for mob " + subKey);
+						}
+						else if (config.staffCreationSecondaryItem == subConfig.staffCreationSecondaryItem)
+						{
+							LogHelper.warn("The secondary staff creation item for mob " + key + " is the same as the secondary staff creation item for mob " + subKey);
+						}
+						else if (config.staffCreationPrimaryItem == subConfig.staffCreationSecondaryItem)
+						{
+							LogHelper.warn("The primary staff creation item for mob " + key + " is the same as the secondary staff creation item for mob " + subKey);
+						}
+						else if (config.staffCreationSecondaryItem == subConfig.staffCreationPrimaryItem)
+						{
+							LogHelper.warn("The secondary staff creation item for mob " + key + " is the same as the primary staff creation item for mob " + subKey);
+						}
+					}
+				}
 			}
 		}
 	}
