@@ -22,8 +22,12 @@ public class Settings
 		public static boolean spawnMobsBehindPlayerEasy;
 		public static boolean spawnMobsBehindPlayerNormal;
 		public static boolean spawnMobsBehindPlayerHard;
-		public static int staffCooldown;
-		public static boolean mobsOnlySpawnableAtNight;
+		public static int staffCooldownEasy;
+		public static int staffCooldownNormal;
+		public static int staffCooldownHard;
+		public static boolean mobOnlySpawnableAtNightEasy;
+		public static boolean mobOnlySpawnableAtNightNormal;
+		public static boolean mobOnlySpawnableAtNightHard;
 		public static boolean registerMobSpawnerRecipes;
 
 	}

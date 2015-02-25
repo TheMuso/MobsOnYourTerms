@@ -2,7 +2,9 @@ package com.themuso.mobsonyourterms.reference;
 
 public class MobSettings
 {
-	public int spawnXPLevel;
+	public int spawnXPLevelEasy;
+	public int spawnXPLevelNormal;
+	public int spawnXPLevelHard;
 	public int minMobsToSpawnEasy;
 	public int maxMobsToSpawnEasy;
 	public int minMobsToSpawnNormal;
@@ -30,5 +32,10 @@ public class MobSettings
 	public boolean mobDropsStaffFragment;
 	public String staffSpawnedMobDropsFragmentForEntity;
 	public int staffSpawnedMobDropsFragmentFortune;
-	public int staffCooldown;
+	public int staffCooldownEasy;
+	public int staffCooldownNormal;
+	public int staffCooldownHard;
+	public boolean mobOnlySpawnableAtNightEasy;
+	public boolean mobOnlySpawnableAtNightNormal;
+	public boolean mobOnlySpawnableAtNightHard;
 }
