@@ -18,18 +18,22 @@ public class ChunkLoadEventHandler
 	@SubscribeEvent
 	public void onChunkLoad(ChunkEvent.Load event)
 	{
-		if (Settings.Spawner.changeMobSpawnerBehavior == true)
+		Chunk chunk = event.getChunk();
+
+		if (!chunk.worldObj.isRemote)
 		{
-			Chunk chunk = event.getChunk();
-			Iterator iterator = chunk.chunkTileEntityMap.values().iterator();
-		
-			while (iterator.hasNext())
+			if (Settings.Spawner.changeMobSpawnerBehavior == true)
 			{
-				TileEntity tileentity = (TileEntity)iterator.next();
-				if (tileentity instanceof TileEntityMobSpawner)
+				Iterator iterator = chunk.chunkTileEntityMap.values().iterator();
+
+				while (iterator.hasNext())
 				{
-					MobSpawnerBaseLogic spawnerlogic = ((TileEntityMobSpawner)tileentity).func_145881_a();
-					changeSpawnerPlayerRange(spawnerlogic);
+					TileEntity tileentity = (TileEntity)iterator.next();
+					if (tileentity instanceof TileEntityMobSpawner)
+					{
+						MobSpawnerBaseLogic spawnerlogic = ((TileEntityMobSpawner)tileentity).func_145881_a();
+						changeSpawnerPlayerRange(spawnerlogic);
+					}
 				}
 			}
 		}
