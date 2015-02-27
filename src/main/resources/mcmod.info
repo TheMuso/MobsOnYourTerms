@@ -1,0 +1,21 @@
+[
+{
+  "modid": "MobsOnYourTerms",
+  "name": "Mobs On Your Terms",
+  "description": "Allows the player to control where and when mobs get spawned.",
+  "version": "0.1",
+  "mcversion": "1.7.10",
+  "url": "",
+  "updateUrl": "",
+  "authorList": [
+    "themuso"
+  ],
+  "credits": "Thanks to Pahimar's Lets Mod Reboot series and code for helping me get started into Minecraft modding.",
+  "logoFile": "",
+  "screenshots": [
+  ],
+  "parent":"",
+  "dependencies": [
+  ]
+}
+]
