@@ -4,11 +4,13 @@ import net.minecraftforge.common.MinecraftForge;
 
 import com.themuso.mobsonyourterms.handler.ChunkLoadEventHandler;
 import com.themuso.mobsonyourterms.handler.ConfigurationHandler;
+import com.themuso.mobsonyourterms.handler.RuleHandler;
 import com.themuso.mobsonyourterms.reference.Reference;
 import com.themuso.mobsonyourterms.utility.LogHelper;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLLoadCompleteEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
@@ -23,8 +25,11 @@ public class MobsOnYourTerms
 	{
 		ConfigurationHandler.init(event.getSuggestedConfigurationFile());
 
-		 ChunkLoadEventHandler chunkEventHandler = new ChunkLoadEventHandler();
-		 MinecraftForge.EVENT_BUS.register(chunkEventHandler);
+		ChunkLoadEventHandler chunkEventHandler = new ChunkLoadEventHandler();
+		RuleHandler ruleEventHandler = new RuleHandler();
+
+		MinecraftForge.EVENT_BUS.register(chunkEventHandler);
+		MinecraftForge.EVENT_BUS.register(ruleEventHandler);
 
 		LogHelper.info("Pre Init complete");
 	}
