@@ -585,21 +585,21 @@ public class ConfigurationHandler
 					MobSettings subConfig = (MobSettings)subIterator.next();
 					String subKey = MobList.getKey(subConfig);
 
-					if (key != subKey)
+					if (!key.equals(subKey))
 					{
-						if (config.staffCreationPrimaryItem == subConfig.staffCreationPrimaryItem)
+						if (config.staffCreationPrimaryItem.equals(subConfig.staffCreationPrimaryItem))
 						{
 							LogHelper.warn("The primary staff creation item for mob " + key + " is the same as the primary staff creation item for mob " + subKey);
 						}
-						else if (config.staffCreationSecondaryItem == subConfig.staffCreationSecondaryItem)
+						else if (config.staffCreationSecondaryItem.equals(subConfig.staffCreationSecondaryItem))
 						{
 							LogHelper.warn("The secondary staff creation item for mob " + key + " is the same as the secondary staff creation item for mob " + subKey);
 						}
-						else if (config.staffCreationPrimaryItem == subConfig.staffCreationSecondaryItem)
+						else if (config.staffCreationPrimaryItem.equals(subConfig.staffCreationSecondaryItem))
 						{
 							LogHelper.warn("The primary staff creation item for mob " + key + " is the same as the secondary staff creation item for mob " + subKey);
 						}
-						else if (config.staffCreationSecondaryItem == subConfig.staffCreationPrimaryItem)
+						else if (config.staffCreationSecondaryItem.equals(subConfig.staffCreationPrimaryItem))
 						{
 							LogHelper.warn("The secondary staff creation item for mob " + key + " is the same as the primary staff creation item for mob " + subKey);
 						}
