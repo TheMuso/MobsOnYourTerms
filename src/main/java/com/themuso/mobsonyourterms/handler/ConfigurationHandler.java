@@ -1,12 +1,12 @@
 package com.themuso.mobsonyourterms.handler;
 
 import java.io.File;
-import java.util.HashMap;
 import java.util.Iterator;
 
 import net.minecraft.item.Item;
 import net.minecraftforge.common.config.Configuration;
 
+import com.themuso.mobsonyourterms.reference.MobList;
 import com.themuso.mobsonyourterms.reference.MobSettings;
 import com.themuso.mobsonyourterms.reference.Settings;
 import com.themuso.mobsonyourterms.utility.LogHelper;
@@ -14,7 +14,6 @@ import com.themuso.mobsonyourterms.utility.LogHelper;
 public class ConfigurationHandler
 {
 	public static Configuration configuration;
-	public static HashMap<String, MobSettings> mobList = new HashMap<String, MobSettings>();
 
 	public static void init(File configFile)
 	{
@@ -100,7 +99,7 @@ public class ConfigurationHandler
 		mobconfig.mobOnlySpawnableAtNightEasy = configuration.getBoolean("mobOnlySpawnableAtNightEasy", "Mobs.Zombie", false, "SHould the mob only be spawnable with the staff at night on easy difficulty.");
 		mobconfig.mobOnlySpawnableAtNightNormal = configuration.getBoolean("mobOnlySpawnableAtNightNormal", "Mobs.Zombie", false, "SHould the mob only be spawnable with the staff at night on normal difficulty.");
 		mobconfig.mobOnlySpawnableAtNightHard = configuration.getBoolean("mobOnlySpawnableAtNightHard", "Mobs.Zombie", true, "SHould the mob only be spawnable with the staff at night on hard difficulty.");
-		mobList.put("Zombie", mobconfig);
+		MobList.mobList.put("Zombie", mobconfig);
 
 		// Creeper
 		mobconfig = new MobSettings();
@@ -140,7 +139,7 @@ public class ConfigurationHandler
 		mobconfig.mobOnlySpawnableAtNightEasy = configuration.getBoolean("mobOnlySpawnableAtNightEasy", "Mobs.Creeper", false, "SHould the mob only be spawnable with the staff at night on easy difficulty.");
 		mobconfig.mobOnlySpawnableAtNightNormal = configuration.getBoolean("mobOnlySpawnableAtNightNormal", "Mobs.Creeper", false, "SHould the mob only be spawnable with the staff at night on normal difficulty.");
 		mobconfig.mobOnlySpawnableAtNightHard = configuration.getBoolean("mobOnlySpawnableAtNightHard", "Mobs.Creeper", true, "SHould the mob only be spawnable with the staff at night on hard difficulty.");
-		mobList.put("Creeper", mobconfig);
+		MobList.mobList.put("Creeper", mobconfig);
 
 		// Spider
 		mobconfig = new MobSettings();
@@ -180,7 +179,7 @@ public class ConfigurationHandler
 		mobconfig.mobOnlySpawnableAtNightEasy = configuration.getBoolean("mobOnlySpawnableAtNightEasy", "Mobs.Spider", false, "SHould the mob only be spawnable with the staff at night on easy difficulty.");
 		mobconfig.mobOnlySpawnableAtNightNormal = configuration.getBoolean("mobOnlySpawnableAtNightNormal", "Mobs.Spider", false, "SHould the mob only be spawnable with the staff at night on normal difficulty.");
 		mobconfig.mobOnlySpawnableAtNightHard = configuration.getBoolean("mobOnlySpawnableAtNightHard", "Mobs.Spider", true, "SHould the mob only be spawnable with the staff at night on hard difficulty.");
-		mobList.put("Spider", mobconfig);
+		MobList.mobList.put("Spider", mobconfig);
 
 		// Slime
 		mobconfig = new MobSettings();
@@ -220,7 +219,7 @@ public class ConfigurationHandler
 		mobconfig.mobOnlySpawnableAtNightEasy = configuration.getBoolean("mobOnlySpawnableAtNightEasy", "Mobs.Slime", false, "SHould the mob only be spawnable with the staff at night on easy difficulty.");
 		mobconfig.mobOnlySpawnableAtNightNormal = configuration.getBoolean("mobOnlySpawnableAtNightNormal", "Mobs.Slime", false, "SHould the mob only be spawnable with the staff at night on normal difficulty.");
 		mobconfig.mobOnlySpawnableAtNightHard = configuration.getBoolean("mobOnlySpawnableAtNightHard", "Mobs.Slime", true, "SHould the mob only be spawnable with the staff at night on hard difficulty.");
-		mobList.put("Slime", mobconfig);
+		MobList.mobList.put("Slime", mobconfig);
 
 		// Silverfish
 		mobconfig = new MobSettings();
@@ -260,7 +259,7 @@ public class ConfigurationHandler
 		mobconfig.mobOnlySpawnableAtNightEasy = configuration.getBoolean("mobOnlySpawnableAtNightEasy", "Mobs.Silverfish", false, "SHould the mob only be spawnable with the staff at night on easy difficulty.");
 		mobconfig.mobOnlySpawnableAtNightNormal = configuration.getBoolean("mobOnlySpawnableAtNightNormal", "Mobs.Silverfish", false, "SHould the mob only be spawnable with the staff at night on normal difficulty.");
 		mobconfig.mobOnlySpawnableAtNightHard = configuration.getBoolean("mobOnlySpawnableAtNightHard", "Mobs.Silverfish", true, "SHould the mob only be spawnable with the staff at night on hard difficulty.");
-		mobList.put("Silverfish", mobconfig);
+		MobList.mobList.put("Silverfish", mobconfig);
 
 		// Skeleton
 		mobconfig = new MobSettings();
@@ -300,7 +299,7 @@ public class ConfigurationHandler
 		mobconfig.mobOnlySpawnableAtNightEasy = configuration.getBoolean("mobOnlySpawnableAtNightEasy", "Mobs.Skeleton", false, "SHould the mob only be spawnable with the staff at night on easy difficulty.");
 		mobconfig.mobOnlySpawnableAtNightNormal = configuration.getBoolean("mobOnlySpawnableAtNightNormal", "Mobs.Skeleton", false, "SHould the mob only be spawnable with the staff at night on normal difficulty.");
 		mobconfig.mobOnlySpawnableAtNightHard = configuration.getBoolean("mobOnlySpawnableAtNightHard", "Mobs.Skeleton", true, "SHould the mob only be spawnable with the staff at night on hard difficulty.");
-		mobList.put("Skeleton", mobconfig);
+		MobList.mobList.put("Skeleton", mobconfig);
 
 		// Witch
 		mobconfig = new MobSettings();
@@ -340,7 +339,7 @@ public class ConfigurationHandler
 		mobconfig.mobOnlySpawnableAtNightEasy = configuration.getBoolean("mobOnlySpawnableAtNightEasy", "Mobs.Witch", false, "SHould the mob only be spawnable with the staff at night on easy difficulty.");
 		mobconfig.mobOnlySpawnableAtNightNormal = configuration.getBoolean("mobOnlySpawnableAtNightNormal", "Mobs.Witch", false, "SHould the mob only be spawnable with the staff at night on normal difficulty.");
 		mobconfig.mobOnlySpawnableAtNightHard = configuration.getBoolean("mobOnlySpawnableAtNightHard", "Mobs.Witch", true, "SHould the mob only be spawnable with the staff at night on hard difficulty.");
-		mobList.put("Witch", mobconfig);
+		MobList.mobList.put("Witch", mobconfig);
 
 		// PigZombie
 		mobconfig = new MobSettings();
@@ -380,7 +379,7 @@ public class ConfigurationHandler
 		mobconfig.mobOnlySpawnableAtNightEasy = configuration.getBoolean("mobOnlySpawnableAtNightEasy", "Mobs.PigZombie", false, "SHould the mob only be spawnable with the staff at night on easy difficulty.");
 		mobconfig.mobOnlySpawnableAtNightNormal = configuration.getBoolean("mobOnlySpawnableAtNightNormal", "Mobs.PigZombie", false, "SHould the mob only be spawnable with the staff at night on normal difficulty.");
 		mobconfig.mobOnlySpawnableAtNightHard = configuration.getBoolean("mobOnlySpawnableAtNightHard", "Mobs.PigZombie", true, "SHould the mob only be spawnable with the staff at night on hard difficulty.");
-		mobList.put("PigZombie", mobconfig);
+		MobList.mobList.put("PigZombie", mobconfig);
 
 		// Ghast
 		mobconfig = new MobSettings();
@@ -420,7 +419,7 @@ public class ConfigurationHandler
 		mobconfig.mobOnlySpawnableAtNightEasy = configuration.getBoolean("mobOnlySpawnableAtNightEasy", "Mobs.Ghast", false, "SHould the mob only be spawnable with the staff at night on easy difficulty.");
 		mobconfig.mobOnlySpawnableAtNightNormal = configuration.getBoolean("mobOnlySpawnableAtNightNormal", "Mobs.Ghast", false, "SHould the mob only be spawnable with the staff at night on normal difficulty.");
 		mobconfig.mobOnlySpawnableAtNightHard = configuration.getBoolean("mobOnlySpawnableAtNightHard", "Mobs.Ghast", true, "SHould the mob only be spawnable with the staff at night on hard difficulty.");
-		mobList.put("Ghast", mobconfig);
+		MobList.mobList.put("Ghast", mobconfig);
 
 		// LavaSlime
 		mobconfig = new MobSettings();
@@ -460,7 +459,7 @@ public class ConfigurationHandler
 		mobconfig.mobOnlySpawnableAtNightEasy = configuration.getBoolean("mobOnlySpawnableAtNightEasy", "Mobs.LavaSlime", false, "SHould the mob only be spawnable with the staff at night on easy difficulty.");
 		mobconfig.mobOnlySpawnableAtNightNormal = configuration.getBoolean("mobOnlySpawnableAtNightNormal", "Mobs.LavaSlime", false, "SHould the mob only be spawnable with the staff at night on normal difficulty.");
 		mobconfig.mobOnlySpawnableAtNightHard = configuration.getBoolean("mobOnlySpawnableAtNightHard", "Mobs.LavaSlime", true, "SHould the mob only be spawnable with the staff at night on hard difficulty.");
-		mobList.put("LavaSlime", mobconfig);
+		MobList.mobList.put("LavaSlime", mobconfig);
 
 		// WitherSkeleton
 		mobconfig = new MobSettings();
@@ -500,7 +499,7 @@ public class ConfigurationHandler
 		mobconfig.mobOnlySpawnableAtNightEasy = configuration.getBoolean("mobOnlySpawnableAtNightEasy", "Mobs.WitherSkeleton", false, "SHould the mob only be spawnable with the staff at night on easy difficulty.");
 		mobconfig.mobOnlySpawnableAtNightNormal = configuration.getBoolean("mobOnlySpawnableAtNightNormal", "Mobs.WitherSkeleton", false, "SHould the mob only be spawnable with the staff at night on normal difficulty.");
 		mobconfig.mobOnlySpawnableAtNightHard = configuration.getBoolean("mobOnlySpawnableAtNightHard", "Mobs.WitherSkeleton", true, "SHould the mob only be spawnable with the staff at night on hard difficulty.");
-		mobList.put("WitherSkeleton", mobconfig);
+		MobList.mobList.put("WitherSkeleton", mobconfig);
 
 		// Enderman
 		mobconfig = new MobSettings();
@@ -540,7 +539,7 @@ public class ConfigurationHandler
 		mobconfig.mobOnlySpawnableAtNightEasy = configuration.getBoolean("mobOnlySpawnableAtNightEasy", "Mobs.Enderman", false, "SHould the mob only be spawnable with the staff at night on easy difficulty.");
 		mobconfig.mobOnlySpawnableAtNightNormal = configuration.getBoolean("mobOnlySpawnableAtNightNormal", "Mobs.Enderman", false, "SHould the mob only be spawnable with the staff at night on normal difficulty.");
 		mobconfig.mobOnlySpawnableAtNightHard = configuration.getBoolean("mobOnlySpawnableAtNightHard", "Mobs.Enderman", true, "SHould the mob only be spawnable with the staff at night on hard difficulty.");
-		mobList.put("Enderman", mobconfig);
+		MobList.mobList.put("Enderman", mobconfig);
 
 		if (configuration.hasChanged())
 		{
@@ -550,41 +549,41 @@ public class ConfigurationHandler
 
 	public static void validate()
 	{
-		if (mobList != null)
+		if (MobList.mobList != null)
 		{
-			Iterator iterator = mobList.values().iterator();
+			Iterator iterator = MobList.mobList.values().iterator();
 
 			while (iterator.hasNext())
 			{
 				MobSettings config = (MobSettings)iterator.next();
 				if (Item.itemRegistry.getObject(config.staffCreationPrimaryItem) == null)
 				{
-					String key = getKey(config);
+					String key = MobList.getKey(config);
 					LogHelper.warn("Invalid item ID " + config.staffCreationPrimaryItem + "for staffCreationPrimaryItem for entity " + key + ", Disabling");
 					config.staffCreationPrimaryItem = "";
 					config.enableStaffCreationPrimaryItem = false;
-					mobList.remove(key);
-					mobList.put(key, config);
+					MobList.mobList.remove(key);
+					MobList.mobList.put(key, config);
 				}
 
 				if (Item.itemRegistry.getObject(config.staffCreationSecondaryItem) == null)
 				{
-					String key = getKey(config);
+					String key = MobList.getKey(config);
 					LogHelper.warn("Invalid item ID " + config.staffCreationSecondaryItem + "for staffCreationSecondaryItem for entity " + key + ", disabling");
 					config.staffCreationSecondaryItem = "";
 					config.enableStaffCreationSecondaryItem = false;
-					mobList.remove(key);
-					mobList.put(key, config);
+					MobList.mobList.remove(key);
+					MobList.mobList.put(key, config);
 				}
 
 				// Duplicate primary/secondary item checking.
-				Iterator subIterator = mobList.values().iterator();
-				String key = getKey(config);
+				Iterator subIterator = MobList.mobList.values().iterator();
+				String key = MobList.getKey(config);
 
 				while (subIterator.hasNext())
 				{
 					MobSettings subConfig = (MobSettings)subIterator.next();
-					String subKey = getKey(subConfig);
+					String subKey = MobList.getKey(subConfig);
 
 					if (key != subKey)
 					{
@@ -608,18 +607,5 @@ public class ConfigurationHandler
 				}
 			}
 		}
-	}
-
-	private static String getKey(MobSettings value)
-	{
-		for (String key : mobList.keySet())
-		{
-			if (mobList.get(key).equals(value))
-			{
-				return key;
-			}
-		}
-
-		return "";
 	}
 }

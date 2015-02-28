@@ -2,6 +2,7 @@ package com.themuso.mobsonyourterms;
 
 import net.minecraftforge.common.MinecraftForge;
 
+import com.themuso.mobsonyourterms.handler.AnvilHandler;
 import com.themuso.mobsonyourterms.handler.ChunkLoadEventHandler;
 import com.themuso.mobsonyourterms.handler.ConfigurationHandler;
 import com.themuso.mobsonyourterms.handler.RuleHandler;
@@ -29,9 +30,11 @@ public class MobsOnYourTerms
 
 		ChunkLoadEventHandler chunkEventHandler = new ChunkLoadEventHandler();
 		RuleHandler ruleEventHandler = new RuleHandler();
+		AnvilHandler anvilHandler = new AnvilHandler();
 
 		MinecraftForge.EVENT_BUS.register(chunkEventHandler);
 		MinecraftForge.EVENT_BUS.register(ruleEventHandler);
+		MinecraftForge.EVENT_BUS.register(anvilHandler);
 
 		ModItems.init();
 
