@@ -6,6 +6,7 @@ import com.themuso.mobsonyourterms.handler.ChunkLoadEventHandler;
 import com.themuso.mobsonyourterms.handler.ConfigurationHandler;
 import com.themuso.mobsonyourterms.handler.RuleHandler;
 import com.themuso.mobsonyourterms.init.ModItems;
+import com.themuso.mobsonyourterms.init.Recipes;
 import com.themuso.mobsonyourterms.reference.Reference;
 import com.themuso.mobsonyourterms.utility.LogHelper;
 
@@ -40,6 +41,7 @@ public class MobsOnYourTerms
 	@Mod.EventHandler
 	public void Init(FMLInitializationEvent event)
 	{
+		Recipes.init();
 		LogHelper.info("Init complete");
 	}
 	
