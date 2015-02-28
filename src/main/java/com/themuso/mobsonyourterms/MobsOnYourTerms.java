@@ -5,6 +5,7 @@ import net.minecraftforge.common.MinecraftForge;
 import com.themuso.mobsonyourterms.handler.ChunkLoadEventHandler;
 import com.themuso.mobsonyourterms.handler.ConfigurationHandler;
 import com.themuso.mobsonyourterms.handler.RuleHandler;
+import com.themuso.mobsonyourterms.init.ModItems;
 import com.themuso.mobsonyourterms.reference.Reference;
 import com.themuso.mobsonyourterms.utility.LogHelper;
 
@@ -30,6 +31,8 @@ public class MobsOnYourTerms
 
 		MinecraftForge.EVENT_BUS.register(chunkEventHandler);
 		MinecraftForge.EVENT_BUS.register(ruleEventHandler);
+
+		ModItems.init();
 
 		LogHelper.info("Pre Init complete");
 	}
