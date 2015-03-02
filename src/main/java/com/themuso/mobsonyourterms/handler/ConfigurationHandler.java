@@ -52,6 +52,7 @@ public class ConfigurationHandler
 		Settings.General.mobOnlySpawnableAtNightNormal = configuration.getBoolean("mobOnlySpawnableAtNightNormal", Configuration.CATEGORY_GENERAL, false, "SHould the mob only be spawnable with the staff at night on normal difficulty.");
 		Settings.General.mobOnlySpawnableAtNightHard = configuration.getBoolean("mobOnlySpawnableAtNightHard", Configuration.CATEGORY_GENERAL, true, "SHould the mob only be spawnable with the staff at night on hard difficulty.");
 		Settings.General.registerMobSpawnerRecipes = configuration.getBoolean("registerMobSpawnerRecipes", Configuration.CATEGORY_GENERAL, true, "Should recipes to make mob spawners get registered.");
+		Settings.General.staffHasOwner = configuration.getBoolean("staffHasOwner", Configuration.CATEGORY_GENERAL, true, "Determines whether a mob spawning staff has an owner after first use.");
 
 		// Mob spawner settings
 		Settings.Spawner.changeMobSpawnerBehavior = configuration.getBoolean("changeMobSpawnerBehavior", "Mob Spawner Settings", true, "Whether mob spawner characteristics are changed.");

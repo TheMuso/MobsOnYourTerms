@@ -29,6 +29,7 @@ public class Settings
 		public static boolean mobOnlySpawnableAtNightNormal;
 		public static boolean mobOnlySpawnableAtNightHard;
 		public static boolean registerMobSpawnerRecipes;
+		public static boolean staffHasOwner;
 
 	}
 
