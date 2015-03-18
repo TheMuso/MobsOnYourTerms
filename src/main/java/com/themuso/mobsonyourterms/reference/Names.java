@@ -12,5 +12,8 @@ public final class Names
 	{
 		public static final String STAFF_MOB_TO_SPAWN = "com.themuso.mobsonyourterms.mobtospawn";
 		public static final String FRAGMENT_IS_FOR_MOB = "com.themuso.mobsonyourterms.fragmentisformob";
+		public static final String OWNER = "com.themuso.mobsonyourterms.owner";
+		public static final String OWNER_UUID_LEAST_SIG = "com.themuso.mobsonyourterms.UUIDLeastSig";
+		public static final String OWNER_UUID_MOST_SIG = "com.themuso.mobsonyourterms.UUIDMostSig";
 	}
 }
