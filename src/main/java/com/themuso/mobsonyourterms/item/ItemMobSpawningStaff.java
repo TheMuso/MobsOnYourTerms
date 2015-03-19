@@ -209,21 +209,21 @@ public class ItemMobSpawningStaff extends ItemMOYT
 			int facing = yaw/45;   //  360degrees divided by 45 == 8 zones
 
 			int mobSpawnRange = spawnRangeFromPlayerMax - spawnRangeFromPlayerMin;
-			int distanceFromPlayer = ((int) (Math.random()*(mobSpawnRange - 1))) + 1;
-			int spawnBehindPlayer = 0;
+			int distanceFromPlayer = world.rand.nextInt(mobSpawnRange) + 1;
+			boolean spawnBehindPlayer = false;
 			if (spawnMobsBehindPlayer)
 			{
-				spawnBehindPlayer = (int)(Math.random() * 1);
+				spawnBehindPlayer = world.rand.nextBoolean();
 			}
 
-			double posX = 0;
-			double posZ = 0;
+			double posX = entityPlayer.posX;
 			double posY = entityPlayer.posY;
+			double posZ = entityPlayer.posZ;
 
 			/* Calculate posz based on the facing value */
 			if (facing == 0 || facing == 1 || facing == 7)
 			{
-				if (spawnBehindPlayer == 1)
+				if (spawnBehindPlayer)
 				{
 					posZ = entityPlayer.posZ - distanceFromPlayer;
 				}
@@ -232,9 +232,10 @@ public class ItemMobSpawningStaff extends ItemMOYT
 					posZ = entityPlayer.posZ + distanceFromPlayer;
 				}
 			}
-			else if (facing == 3 || facing == 4 || facing == 5)
+
+			if (facing == 3 || facing == 4 || facing == 5)
 			{
-				if (spawnBehindPlayer == 1)
+				if (spawnBehindPlayer)
 				{
 					posZ = entityPlayer.posZ + distanceFromPlayer;
 				}
@@ -247,7 +248,7 @@ public class ItemMobSpawningStaff extends ItemMOYT
 			/* Calculate posx based on facing value */
 			if (facing == 1 || facing == 2 || facing == 3)
 			{
-				if (spawnBehindPlayer == 1)
+				if (spawnBehindPlayer)
 				{
 					posX = entityPlayer.posX + distanceFromPlayer;
 				}
@@ -256,9 +257,10 @@ public class ItemMobSpawningStaff extends ItemMOYT
 					posX = entityPlayer.posX - distanceFromPlayer;
 				}
 			}
-			else if (facing == 5 || facing == 6 || facing == 7)
+
+			if (facing == 5 || facing == 6 || facing == 7)
 			{
-				if (spawnBehindPlayer == 1)
+				if (spawnBehindPlayer)
 				{
 					posX = entityPlayer.posX - distanceFromPlayer;
 				}
@@ -268,13 +270,8 @@ public class ItemMobSpawningStaff extends ItemMOYT
 				}
 			}
 
-			if (mob instanceof EntityLivingBase)
-			{
-				((EntityLiving)mob).onSpawnWithEgg((IEntityLivingData)null);
-				EntityLiving entityliving = mob instanceof EntityLiving ? (EntityLiving)mob : null;
-				mob.setLocationAndAngles(posX, posY, posZ, world.rand.nextFloat() * 360.0F, 0.0F);
-				world.spawnEntityInWorld(mob);			
-			}
+			mob.setLocationAndAngles(posX, posY, posZ, world.rand.nextFloat() * 360.0F, 0.0F);
+			world.spawnEntityInWorld(mob);			
 
 		}
 
