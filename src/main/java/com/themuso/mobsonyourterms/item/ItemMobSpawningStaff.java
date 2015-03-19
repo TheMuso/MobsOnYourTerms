@@ -87,6 +87,9 @@ public class ItemMobSpawningStaff extends ItemMOYT
 			int spawnRangeFromPlayerMax = 0;
 			int spawnXPLevel = 0;
 			int staffCooldown = 0;
+			int mobsToBeSpawned = 0;
+			int mobsToBeSpawnedRange = 0;
+			int mobSpawnCount = 0;
 			boolean spawnMobsBehindPlayer = false;
 			boolean mobOnlySpawnableAtNight = false;
 			boolean validMobConfigFound = false;
@@ -184,92 +187,6 @@ public class ItemMobSpawningStaff extends ItemMOYT
 				return itemStack;
 			}
 
-			mob = EntityList.createEntityByName(mobToSpawn, world);
-
-			/*
-			 * Z = North/South, south being positive.
-			 * X = West/East, east being positive.
-			 * Facing value ranges from 0-7.
-			 * Facing values: South = 0, West = 2, North = 4, East = 6.
-			 * South west, north east etc should be self explanitory.
-			 * Facing code below taken from a post on the minecraft forge
-			 * forums.
-			 */
-
-			int yaw = (int)entityPlayer.rotationYaw;
-
-			if (yaw < 0)              //due to the yaw running a -360 to positive 360
-			{
-				yaw+=360;    //not sure why it's that way
-			}
-
-			yaw+=22;     //centers coordinates you may want to drop this line
-			yaw%=360;  //and this one if you want a strict interpretation of the zones
-
-			int facing = yaw/45;   //  360degrees divided by 45 == 8 zones
-
-			int mobSpawnRange = spawnRangeFromPlayerMax - spawnRangeFromPlayerMin;
-			int distanceFromPlayer = world.rand.nextInt(mobSpawnRange) + 1;
-			boolean spawnBehindPlayer = false;
-			if (spawnMobsBehindPlayer)
-			{
-				spawnBehindPlayer = world.rand.nextBoolean();
-			}
-
-			double posX = entityPlayer.posX;
-			double posY = entityPlayer.posY;
-			double posZ = entityPlayer.posZ;
-
-			/* Calculate posz based on the facing value */
-			if (facing == 0 || facing == 1 || facing == 7)
-			{
-				if (spawnBehindPlayer)
-				{
-					posZ = entityPlayer.posZ - distanceFromPlayer;
-				}
-				else
-				{
-					posZ = entityPlayer.posZ + distanceFromPlayer;
-				}
-			}
-
-			if (facing == 3 || facing == 4 || facing == 5)
-			{
-				if (spawnBehindPlayer)
-				{
-					posZ = entityPlayer.posZ + distanceFromPlayer;
-				}
-				else
-				{
-					posZ = entityPlayer.posZ - distanceFromPlayer;
-				}
-			}
-
-			/* Calculate posx based on facing value */
-			if (facing == 1 || facing == 2 || facing == 3)
-			{
-				if (spawnBehindPlayer)
-				{
-					posX = entityPlayer.posX + distanceFromPlayer;
-				}
-				else
-				{
-					posX = entityPlayer.posX - distanceFromPlayer;
-				}
-			}
-
-			if (facing == 5 || facing == 6 || facing == 7)
-			{
-				if (spawnBehindPlayer)
-				{
-					posX = entityPlayer.posX - distanceFromPlayer;
-				}
-				else
-				{
-					posX = entityPlayer.posX + distanceFromPlayer;
-				}
-			}
-
 			if (!entityPlayer.capabilities.isCreativeMode)
 			{
 				if (entityPlayer.experienceLevel < spawnXPLevel)
@@ -281,9 +198,106 @@ public class ItemMobSpawningStaff extends ItemMOYT
 				entityPlayer.addExperienceLevel(-spawnXPLevel);
 			}
 
-			mob.setLocationAndAngles(posX, posY, posZ, world.rand.nextFloat() * 360.0F, 0.0F);
-			world.spawnEntityInWorld(mob);			
+			mobsToBeSpawnedRange = maxMobsToSpawn - minMobsToSpawn;
+			if (mobsToBeSpawnedRange <= 0)
+			{
+				mobsToBeSpawnedRange = 1;
+			}
+			mobsToBeSpawned = (world.rand.nextInt(mobsToBeSpawnedRange) + 1) + minMobsToSpawn;
 
+			while (mobSpawnCount < mobsToBeSpawned)
+			{
+				mob = EntityList.createEntityByName(mobToSpawn, world);
+
+				/*
+				 * Z = North/South, south being positive.
+				 * X = West/East, east being positive.
+				 * Facing value ranges from 0-7.
+				 * Facing values: South = 0, West = 2, North = 4, East = 6.
+				 * South west, north east etc should be self explanitory.
+				 * Facing code below taken from a post on the minecraft forge
+				 * forums.
+				 */
+
+				int yaw = (int)entityPlayer.rotationYaw;
+
+				if (yaw < 0)              //due to the yaw running a -360 to positive 360
+				{
+					yaw+=360;    //not sure why it's that way
+				}
+
+				yaw+=22;     //centers coordinates you may want to drop this line
+				yaw%=360;  //and this one if you want a strict interpretation of the zones
+
+				int facing = yaw/45;   //  360degrees divided by 45 == 8 zones
+
+				int mobSpawnRange = spawnRangeFromPlayerMax - spawnRangeFromPlayerMin;
+				int distanceFromPlayer = world.rand.nextInt(mobSpawnRange) + 1;
+				boolean spawnBehindPlayer = false;
+				if (spawnMobsBehindPlayer)
+				{
+					spawnBehindPlayer = world.rand.nextBoolean();
+				}
+
+				double posX = entityPlayer.posX;
+				double posY = entityPlayer.posY;
+				double posZ = entityPlayer.posZ;
+
+				/* Calculate posz based on the facing value */
+				if (facing == 0 || facing == 1 || facing == 7)
+				{
+					if (spawnBehindPlayer)
+					{
+						posZ = entityPlayer.posZ - distanceFromPlayer;
+					}
+					else
+					{
+						posZ = entityPlayer.posZ + distanceFromPlayer;
+					}
+				}
+
+				if (facing == 3 || facing == 4 || facing == 5)
+				{
+					if (spawnBehindPlayer)
+					{
+						posZ = entityPlayer.posZ + distanceFromPlayer;
+					}
+					else
+					{
+						posZ = entityPlayer.posZ - distanceFromPlayer;
+					}
+				}
+
+				/* Calculate posx based on facing value */
+				if (facing == 1 || facing == 2 || facing == 3)
+				{
+					if (spawnBehindPlayer)
+					{
+						posX = entityPlayer.posX + distanceFromPlayer;
+					}
+					else
+					{
+						posX = entityPlayer.posX - distanceFromPlayer;
+					}
+				}
+
+				if (facing == 5 || facing == 6 || facing == 7)
+				{
+					if (spawnBehindPlayer)
+					{
+						posX = entityPlayer.posX - distanceFromPlayer;
+					}
+					else
+					{
+						posX = entityPlayer.posX + distanceFromPlayer;
+					}
+				}
+
+				mob.setLocationAndAngles(posX, posY, posZ, world.rand.nextFloat() * 360.0F, 0.0F);
+				world.spawnEntityInWorld(mob);			
+
+				mobSpawnCount++;
+			}
 		}
 
 		return itemStack;
