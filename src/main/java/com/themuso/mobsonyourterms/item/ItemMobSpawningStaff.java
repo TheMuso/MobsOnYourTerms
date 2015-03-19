@@ -198,6 +198,12 @@ public class ItemMobSpawningStaff extends ItemMOYT
 				entityPlayer.addExperienceLevel(-spawnXPLevel);
 			}
 
+			if (mobOnlySpawnableAtNight && world.isDaytime())
+			{
+				entityPlayer.addChatComponentMessage(new ChatComponentText("This mob can only be spawned at night."));
+				return itemStack;
+			}
+
 			mobsToBeSpawnedRange = maxMobsToSpawn - minMobsToSpawn;
 			if (mobsToBeSpawnedRange <= 0)
 			{
