@@ -270,6 +270,17 @@ public class ItemMobSpawningStaff extends ItemMOYT
 				}
 			}
 
+			if (!entityPlayer.capabilities.isCreativeMode)
+			{
+				if (entityPlayer.experienceLevel < spawnXPLevel)
+				{
+					entityPlayer.addChatComponentMessage(new ChatComponentText("You do not have enough XP to spawn this mob. You need at least " + spawnXPLevel + " levels."));
+					return itemStack;
+				}
+
+				entityPlayer.addExperienceLevel(-spawnXPLevel);
+			}
+
 			mob.setLocationAndAngles(posX, posY, posZ, world.rand.nextFloat() * 360.0F, 0.0F);
 			world.spawnEntityInWorld(mob);			
 
