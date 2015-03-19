@@ -209,7 +209,7 @@ public class ItemMobSpawningStaff extends ItemMOYT
 			{
 				mobsToBeSpawnedRange = 1;
 			}
-			mobsToBeSpawned = (world.rand.nextInt(mobsToBeSpawnedRange) + 1) + minMobsToSpawn;
+			mobsToBeSpawned = world.rand.nextInt(mobsToBeSpawnedRange) + minMobsToSpawn;
 
 			while (mobSpawnCount < mobsToBeSpawned)
 			{
