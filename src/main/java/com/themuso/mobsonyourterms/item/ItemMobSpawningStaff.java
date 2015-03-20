@@ -187,6 +187,12 @@ public class ItemMobSpawningStaff extends ItemMOYT
 				return itemStack;
 			}
 
+			if (mobOnlySpawnableAtNight && world.isDaytime())
+			{
+				entityPlayer.addChatComponentMessage(new ChatComponentText("This mob can only be spawned at night."));
+				return itemStack;
+			}
+
 			if (!entityPlayer.capabilities.isCreativeMode)
 			{
 				if (entityPlayer.experienceLevel < spawnXPLevel)
@@ -196,12 +202,6 @@ public class ItemMobSpawningStaff extends ItemMOYT
 				}
 
 				entityPlayer.addExperienceLevel(-spawnXPLevel);
-			}
-
-			if (mobOnlySpawnableAtNight && world.isDaytime())
-			{
-				entityPlayer.addChatComponentMessage(new ChatComponentText("This mob can only be spawned at night."));
-				return itemStack;
 			}
 
 			mobsToBeSpawnedRange = maxMobsToSpawn - minMobsToSpawn;
