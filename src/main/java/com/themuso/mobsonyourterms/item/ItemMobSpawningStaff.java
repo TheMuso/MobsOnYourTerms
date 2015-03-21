@@ -1,5 +1,6 @@
 package com.themuso.mobsonyourterms.item;
 
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -90,6 +91,8 @@ public class ItemMobSpawningStaff extends ItemMOYT
 			int mobsToBeSpawned = 0;
 			int mobsToBeSpawnedRange = 0;
 			int mobSpawnCount = 0;
+			long currentTime;
+			long coolDownTime = 0;
 			boolean spawnMobsBehindPlayer = false;
 			boolean mobOnlySpawnableAtNight = false;
 			boolean validMobConfigFound = false;
@@ -185,6 +188,26 @@ public class ItemMobSpawningStaff extends ItemMOYT
 			{
 				entityPlayer.addChatComponentMessage(new ChatComponentText("Unknown mob to be spawned: " + mobToSpawn));
 				return itemStack;
+			}
+
+			if (staffCooldown > 0)
+			{
+				currentTime = (new Date().getTime());
+				if (ItemNBTHelper.hasTag(itemStack, Names.NBTTags.STAFF_SPAWN_TIMESTAMP))
+				{
+					coolDownTime = ItemNBTHelper.getLong(itemStack, Names.NBTTags.STAFF_SPAWN_TIMESTAMP) + (staffCooldown * 1000);
+
+					if (currentTime < coolDownTime)
+					{
+						entityPlayer.addChatComponentMessage(new ChatComponentText("Slow down, you need to let the staff cooldown expire."));
+						return itemStack;
+					}
+					ItemNBTHelper.setLong(itemStack, Names.NBTTags.STAFF_SPAWN_TIMESTAMP, currentTime);
+				}
+				else
+				{
+					ItemNBTHelper.setLong(itemStack, Names.NBTTags.STAFF_SPAWN_TIMESTAMP, currentTime);
+				}
 			}
 
 			if (mobOnlySpawnableAtNight && world.isDaytime())
