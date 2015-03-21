@@ -6,9 +6,7 @@ import java.util.List;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
-import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.IEntityLivingData;
+import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChatComponentText;
@@ -239,7 +237,16 @@ public class ItemMobSpawningStaff extends ItemMOYT
 
 			while (mobSpawnCount < mobsToBeSpawned)
 			{
-				mob = EntityList.createEntityByName(mobToSpawn, world);
+				/* Special case various entities that require custom variable settings */
+				if (mobToSpawn.equals("Wither Skeleton"))
+				{
+					mob = EntityList.createEntityByName("Skeleton", world);
+					((EntitySkeleton)mob).setSkeletonType(1);
+				}
+				else
+				{
+					mob = EntityList.createEntityByName(mobToSpawn, world);
+				}
 
 				/*
 				 * Z = North/South, south being positive.
