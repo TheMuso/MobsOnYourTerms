@@ -102,6 +102,7 @@ public class ItemMobSpawningStaff extends ItemMOYT
 			{
 				if (difficulty == EnumDifficulty.EASY)
 				{
+					spawnXPLevel = Settings.General.spawnXPLevelEasy;
 					minMobsToSpawn = Settings.General.minMobsToSpawnEasy;
 					maxMobsToSpawn = Settings.General.maxMobsToSpawnEasy;
 					spawnRangeFromPlayerMin = Settings.General.spawnRangeFromPlayerMinEasy;
@@ -112,6 +113,7 @@ public class ItemMobSpawningStaff extends ItemMOYT
 				}
 				else if (difficulty == EnumDifficulty.NORMAL)
 				{
+					spawnXPLevel = Settings.General.spawnXPLevelNormal;
 					minMobsToSpawn = Settings.General.minMobsToSpawnNormal;
 					maxMobsToSpawn = Settings.General.maxMobsToSpawnNormal;
 					spawnRangeFromPlayerMin = Settings.General.spawnRangeFromPlayerMinNormal;
@@ -122,6 +124,7 @@ public class ItemMobSpawningStaff extends ItemMOYT
 				}
 				else if (difficulty == EnumDifficulty.HARD)
 				{
+					spawnXPLevel = Settings.General.spawnXPLevelHard;
 					minMobsToSpawn = Settings.General.minMobsToSpawnHard;
 					maxMobsToSpawn = Settings.General.maxMobsToSpawnHard;
 					spawnRangeFromPlayerMin = Settings.General.spawnRangeFromPlayerMinHard;
@@ -143,6 +146,7 @@ public class ItemMobSpawningStaff extends ItemMOYT
 					{
 						if (Settings.General.useIndividualMobSpawnSettings)
 						{
+							spawnXPLevel = mobConfig.spawnXPLevelEasy;
 							minMobsToSpawn = mobConfig.minMobsToSpawnEasy;
 							maxMobsToSpawn = mobConfig.maxMobsToSpawnEasy;
 							spawnRangeFromPlayerMin = mobConfig.spawnRangeFromPlayerMinEasy;
@@ -151,12 +155,12 @@ public class ItemMobSpawningStaff extends ItemMOYT
 							spawnMobsBehindPlayer = mobConfig.spawnMobsBehindPlayerEasy;
 							mobOnlySpawnableAtNight = mobConfig.mobOnlySpawnableAtNightEasy;
 						}
-						spawnXPLevel = mobConfig.spawnXPLevelEasy;
 					}
 					else if (difficulty == EnumDifficulty.NORMAL)
 					{
 						if (Settings.General.useIndividualMobSpawnSettings)
 						{
+							spawnXPLevel = mobConfig.spawnXPLevelNormal;
 							minMobsToSpawn = mobConfig.minMobsToSpawnNormal;
 							maxMobsToSpawn = mobConfig.maxMobsToSpawnNormal;
 							spawnRangeFromPlayerMin = mobConfig.spawnRangeFromPlayerMinNormal;
@@ -165,12 +169,12 @@ public class ItemMobSpawningStaff extends ItemMOYT
 							spawnMobsBehindPlayer = mobConfig.spawnMobsBehindPlayerNormal;
 							mobOnlySpawnableAtNight = mobConfig.mobOnlySpawnableAtNightNormal;
 						}
-						spawnXPLevel = mobConfig.spawnXPLevelNormal;
 					}
 					else if (difficulty == EnumDifficulty.HARD)
 					{
 						if (Settings.General.useIndividualMobSpawnSettings)
 						{
+							spawnXPLevel = mobConfig.spawnXPLevelHard;
 							minMobsToSpawn = mobConfig.minMobsToSpawnHard;
 							maxMobsToSpawn = mobConfig.maxMobsToSpawnHard;
 							spawnRangeFromPlayerMin = mobConfig.spawnRangeFromPlayerMinHard;
@@ -179,7 +183,6 @@ public class ItemMobSpawningStaff extends ItemMOYT
 							spawnMobsBehindPlayer = mobConfig.spawnMobsBehindPlayerHard;
 							mobOnlySpawnableAtNight = mobConfig.mobOnlySpawnableAtNightHard;
 						}
-						spawnXPLevel = mobConfig.spawnXPLevelHard;
 					}
 				}
 			}
