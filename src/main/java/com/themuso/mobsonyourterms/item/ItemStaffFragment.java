@@ -17,7 +17,6 @@ public class ItemStaffFragment extends ItemMOYT
 	{
 		super();
 		this.setUnlocalizedName(Names.Items.STAFF_FRAGMENT);
-		maxStackSize = 64;
 	}
 
 	@SideOnly(Side.CLIENT)
