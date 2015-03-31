@@ -17,6 +17,7 @@ import com.themuso.mobsonyourterms.reference.MobList;
 import com.themuso.mobsonyourterms.reference.MobSettings;
 import com.themuso.mobsonyourterms.reference.Names;
 import com.themuso.mobsonyourterms.reference.Settings;
+import com.themuso.mobsonyourterms.utility.EntityNBTHelper;
 import com.themuso.mobsonyourterms.utility.ItemHelper;
 import com.themuso.mobsonyourterms.utility.ItemNBTHelper;
 
@@ -29,7 +30,7 @@ public class ItemMobSpawningStaff extends ItemMOYT
 	{
 		super();
 		this.setUnlocalizedName(Names.Items.MOB_SPAWNING_STAFF);
-		maxStackSize = 1;
+		this.maxStackSize = 1;
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -333,6 +334,7 @@ public class ItemMobSpawningStaff extends ItemMOYT
 				}
 
 				mob.setLocationAndAngles(posX, posY, posZ, world.rand.nextFloat() * 360.0F, 0.0F);
+				EntityNBTHelper.setBoolean(mob, Names.NBTTags.MOB_SPAWNED_WITH_STAFF, true);
 				world.spawnEntityInWorld(mob);			
 
 				mobSpawnCount++;
