@@ -97,7 +97,7 @@ public class ItemMobSpawningStaff extends ItemMOYT
 			boolean validMobConfigFound = false;
 			Entity mob;
 
-			if (!Settings.General.useIndividualMobSpawnSettings)
+			if (Settings.General.useIndividualMobSpawnSettings)
 			{
 				if (difficulty == EnumDifficulty.EASY)
 				{
@@ -143,7 +143,7 @@ public class ItemMobSpawningStaff extends ItemMOYT
 					validMobConfigFound = true;
 					if (difficulty == EnumDifficulty.EASY)
 					{
-						if (Settings.General.useIndividualMobSpawnSettings)
+						if (!Settings.General.useIndividualMobSpawnSettings)
 						{
 							spawnXPLevel = mobConfig.spawnXPLevelEasy;
 							minMobsToSpawn = mobConfig.minMobsToSpawnEasy;
@@ -157,7 +157,7 @@ public class ItemMobSpawningStaff extends ItemMOYT
 					}
 					else if (difficulty == EnumDifficulty.NORMAL)
 					{
-						if (Settings.General.useIndividualMobSpawnSettings)
+						if (!Settings.General.useIndividualMobSpawnSettings)
 						{
 							spawnXPLevel = mobConfig.spawnXPLevelNormal;
 							minMobsToSpawn = mobConfig.minMobsToSpawnNormal;
@@ -171,7 +171,7 @@ public class ItemMobSpawningStaff extends ItemMOYT
 					}
 					else if (difficulty == EnumDifficulty.HARD)
 					{
-						if (Settings.General.useIndividualMobSpawnSettings)
+						if (!Settings.General.useIndividualMobSpawnSettings)
 						{
 							spawnXPLevel = mobConfig.spawnXPLevelHard;
 							minMobsToSpawn = mobConfig.minMobsToSpawnHard;
