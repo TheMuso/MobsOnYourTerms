@@ -90,6 +90,7 @@ public class ItemMobSpawningStaff extends ItemMOYT
 			int mobsToBeSpawned = 0;
 			int mobsToBeSpawnedRange = 0;
 			int mobSpawnCount = 0;
+			int distanceFromPlayer = 0;
 			long currentTime;
 			long coolDownTime = 0;
 			boolean spawnMobsBehindPlayer = false;
@@ -272,7 +273,15 @@ public class ItemMobSpawningStaff extends ItemMOYT
 				int facing = yaw/45;   //  360degrees divided by 45 == 8 zones
 
 				int mobSpawnRange = spawnRangeFromPlayerMax - spawnRangeFromPlayerMin;
-				int distanceFromPlayer = world.rand.nextInt(mobSpawnRange) + 1;
+				if (mobSpawnRange <= 0)
+				{
+					distanceFromPlayer = 1;
+				}
+				else
+				{
+					distanceFromPlayer = world.rand.nextInt(mobSpawnRange) + 1;
+				}
+
 				boolean spawnBehindPlayer = false;
 				if (spawnMobsBehindPlayer)
 				{
