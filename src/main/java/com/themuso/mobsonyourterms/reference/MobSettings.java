@@ -28,10 +28,15 @@ public class MobSettings
 	public String staffCreationSecondaryItem;
 	public int staffCreationSecondaryItemAmount;
 	public int staffCreationSecondaryItemLevels;
-	public boolean enableStaffFragmentItem;
 	public boolean mobDropsStaffFragment;
 	public String staffSpawnedMobDropsFragmentForEntity;
-	public int staffSpawnedMobDropsFragmentFortune;
+	public int minDroppedStaffFragmentsEasy;
+	public int maxDroppedStaffFragmentsEasy;
+	public int minDroppedStaffFragmentsNormal;
+	public int maxDroppedStaffFragmentsNormal;
+	public int minDroppedStaffFragmentsHard;
+	public int maxDroppedStaffFragmentsHard;
+	public int staffFragmentAnvilCost;
 	public int staffCooldownEasy;
 	public int staffCooldownNormal;
 	public int staffCooldownHard;

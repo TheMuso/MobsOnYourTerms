@@ -31,9 +31,9 @@ public class Settings
 		public static boolean mobOnlySpawnableAtNightEasy;
 		public static boolean mobOnlySpawnableAtNightNormal;
 		public static boolean mobOnlySpawnableAtNightHard;
+		public static boolean enableStaffFragmentItem;
 		public static boolean registerMobSpawnerRecipes;
 		public static boolean staffHasOwner;
-
 	}
 
 	public static class Spawner
