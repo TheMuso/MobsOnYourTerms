@@ -9,6 +9,7 @@ import com.themuso.mobsonyourterms.init.ModItems;
 import com.themuso.mobsonyourterms.reference.MobList;
 import com.themuso.mobsonyourterms.reference.MobSettings;
 import com.themuso.mobsonyourterms.reference.Names;
+import com.themuso.mobsonyourterms.reference.Settings;
 import com.themuso.mobsonyourterms.utility.ItemNBTHelper;
 import com.themuso.mobsonyourterms.utility.LogHelper;
 
@@ -35,7 +36,8 @@ public class AnvilHandler
 		{
 			MobSettings mobConfig = (MobSettings)iterator.next();
 
-			if (mobConfig.enableStaffCreationPrimaryItem && (mobConfig.staffCreationPrimaryItem.equals(rightSlotItemName)))
+			if (mobConfig.enableStaffCreationPrimaryItem && (mobConfig.staffCreationPrimaryItem.equals(rightSlotItemName))
+			 && event.right.stackSize >= mobConfig.staffCreationPrimaryItemAmount)
 			{
 				LogHelper.info("Primary item enabled for entity " + MobList.getKey(mobConfig));
 				event.output = event.left.copy();
@@ -44,7 +46,8 @@ public class AnvilHandler
 				event.materialCost = mobConfig.staffCreationPrimaryItemAmount;
 				return;
 			}
-			else if (mobConfig.enableStaffCreationSecondaryItem && (mobConfig.staffCreationSecondaryItem.equals(rightSlotItemName)))
+			else if (mobConfig.enableStaffCreationSecondaryItem && (mobConfig.staffCreationSecondaryItem.equals(rightSlotItemName))
+			  && event.right.stackSize >= mobConfig.staffCreationSecondaryItemAmount)
 			{
 				LogHelper.info("Secondary item enabled for entity " + MobList.getKey(mobConfig));
 				event.output = event.left.copy();
@@ -53,7 +56,8 @@ public class AnvilHandler
 				event.materialCost = mobConfig.staffCreationSecondaryItemAmount;
 				return;
 			}
-			else if (mobConfig.enableStaffFragmentItem && (rightSlotItemName.equals(staffFragmentItemName)) && ItemNBTHelper.hasTag(event.right, Names.NBTTags.FRAGMENT_IS_FOR_MOB))
+			else if (Settings.General.enableStaffFragmentItem && (rightSlotItemName.equals(staffFragmentItemName)) && ItemNBTHelper.hasTag(event.right, Names.NBTTags.FRAGMENT_IS_FOR_MOB)
+			  && (event.right.stackSize >= mobConfig.staffFragmentAnvilCost) && (ItemNBTHelper.getString(event.right, Names.NBTTags.FRAGMENT_IS_FOR_MOB).equals(MobList.getKey(mobConfig))))
 			{
 				event.output = event.left.copy();
 				ItemNBTHelper.setString(event.output, Names.NBTTags.STAFF_MOB_TO_SPAWN, ItemNBTHelper.getString(event.right, Names.NBTTags.FRAGMENT_IS_FOR_MOB));
