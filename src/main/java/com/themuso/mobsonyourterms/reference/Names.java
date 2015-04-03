@@ -16,5 +16,6 @@ public final class Names
 		public static final String OWNER_UUID_LEAST_SIG = "com.themuso.mobsonyourterms.UUIDLeastSig";
 		public static final String OWNER_UUID_MOST_SIG = "com.themuso.mobsonyourterms.UUIDMostSig";
 		public static final String STAFF_SPAWN_TIMESTAMP = "com.themuso.mobsonyourterms.staffspawntimestamp";
+		public static final String MOB_SPAWNED_WITH_STAFF = "com.themuso.mobsonyourterms.mobspawnedwithstaff";
 	}
 }
