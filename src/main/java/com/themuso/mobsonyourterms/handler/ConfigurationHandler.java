@@ -538,16 +538,23 @@ public class ConfigurationHandler
 
 	public static void validate()
 	{
+		Iterator iterator;
+		Iterator subIterator;
+		String key;
+		String subKey;
+		MobSettings config;
+		MobSettings subConfig;
+
 		if (MobList.mobList != null)
 		{
-			Iterator iterator = MobList.mobList.values().iterator();
+			iterator = MobList.mobList.values().iterator();
 
 			while (iterator.hasNext())
 			{
-				MobSettings config = (MobSettings)iterator.next();
+				config = (MobSettings)iterator.next();
 				if (Item.itemRegistry.getObject(config.staffCreationPrimaryItem) == null)
 				{
-					String key = MobList.getKey(config);
+					key = MobList.getKey(config);
 					LogHelper.warn("Invalid item ID " + config.staffCreationPrimaryItem + "for staffCreationPrimaryItem for entity " + key + ", Disabling");
 					config.staffCreationPrimaryItem = "";
 					config.enableStaffCreationPrimaryItem = false;
@@ -557,7 +564,7 @@ public class ConfigurationHandler
 
 				if (Item.itemRegistry.getObject(config.staffCreationSecondaryItem) == null)
 				{
-					String key = MobList.getKey(config);
+					key = MobList.getKey(config);
 					LogHelper.warn("Invalid item ID " + config.staffCreationSecondaryItem + "for staffCreationSecondaryItem for entity " + key + ", disabling");
 					config.staffCreationSecondaryItem = "";
 					config.enableStaffCreationSecondaryItem = false;
@@ -566,13 +573,13 @@ public class ConfigurationHandler
 				}
 
 				// Duplicate primary/secondary item checking.
-				Iterator subIterator = MobList.mobList.values().iterator();
-				String key = MobList.getKey(config);
+				subIterator = MobList.mobList.values().iterator();
+				key = MobList.getKey(config);
 
 				while (subIterator.hasNext())
 				{
-					MobSettings subConfig = (MobSettings)subIterator.next();
-					String subKey = MobList.getKey(subConfig);
+					subConfig = (MobSettings)subIterator.next();
+					subKey = MobList.getKey(subConfig);
 
 					if (!key.equals(subKey))
 					{

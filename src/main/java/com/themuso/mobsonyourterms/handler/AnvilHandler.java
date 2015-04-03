@@ -20,6 +20,11 @@ public class AnvilHandler
 	@SubscribeEvent
 	public void onAnvilEvent(AnvilUpdateEvent event)
 	{
+		Iterator iterator;
+		String rightSlotItemName;
+		String staffFragmentItemName;
+		MobSettings mobConfig;
+
 		if (event.left == null || event.left.stackSize != 1 ||
 		    event.left.getItem() != (Item)ModItems.mobSpawningStaff ||
 		    event.right == null ||
@@ -28,13 +33,13 @@ public class AnvilHandler
 			return;
 		}
 
-		String rightSlotItemName = Item.itemRegistry.getNameForObject(event.right.getItem());
-		String staffFragmentItemName = Item.itemRegistry.getNameForObject(ModItems.staffFragment);
-		Iterator iterator = MobList.mobList.values().iterator();
+		rightSlotItemName = Item.itemRegistry.getNameForObject(event.right.getItem());
+		staffFragmentItemName = Item.itemRegistry.getNameForObject(ModItems.staffFragment);
+		iterator = MobList.mobList.values().iterator();
 
 		while (iterator.hasNext())
 		{
-			MobSettings mobConfig = (MobSettings)iterator.next();
+			mobConfig = (MobSettings)iterator.next();
 
 			if (mobConfig.enableStaffCreationPrimaryItem && (mobConfig.staffCreationPrimaryItem.equals(rightSlotItemName))
 			 && event.right.stackSize >= mobConfig.staffCreationPrimaryItemAmount)

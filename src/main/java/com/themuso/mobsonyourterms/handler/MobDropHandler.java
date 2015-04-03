@@ -26,17 +26,17 @@ public class MobDropHandler
 	public void onMobDrop(LivingDropsEvent event)
 	{
 		String mobName;
+		int lootLevel = 0;
+		int minDrops = 0;
+		int maxDrops = 0;
+		int dropsRange = 0;
+		int numDrops = 0;
 		EnumDifficulty difficulty = event.entityLiving.worldObj.difficultySetting;
 		Entity mob;
 		EntityPlayer player;
 		MobSettings mobConfig;
 		ItemStack fragment;
 		EntityItem drop;
-		int lootLevel = 0;
-		int minDrops = 0;
-		int maxDrops = 0;
-		int dropsRange = 0;
-		int numDrops = 0;
 
 		if (difficulty == EnumDifficulty.PEACEFUL)
 		{

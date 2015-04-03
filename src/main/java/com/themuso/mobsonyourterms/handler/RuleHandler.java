@@ -20,8 +20,6 @@ public class RuleHandler
 				if (event.world.getGameRules().getGameRuleBooleanValue("doMobSpawning"));
 				{
 					event.world.getGameRules().setOrCreateGameRule("doMobSpawning", Boolean.toString(Settings.General.doMobSpawningGameRule));
-					EntityPlayer player = (EntityPlayer)event.entity;
-					player.addChatComponentMessage(new ChatComponentText("Mob spawning is set to " + Boolean.toString(Settings.General.doMobSpawningGameRule)));
 				}
 			}
 		}

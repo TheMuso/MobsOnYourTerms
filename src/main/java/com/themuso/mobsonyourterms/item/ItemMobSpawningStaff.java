@@ -50,6 +50,33 @@ public class ItemMobSpawningStaff extends ItemMOYT
 	@Override
 	public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer entityPlayer)
 	{
+		Iterator iterator;
+		String mobToSpawn;
+		int minMobsToSpawn = 0;
+		int maxMobsToSpawn = 0;
+		int spawnRangeFromPlayerMin = 0;
+		int spawnRangeFromPlayerMax = 0;
+		int spawnXPLevel = 0;
+		int staffCooldown = 0;
+		int mobsToBeSpawned = 0;
+		int mobsToBeSpawnedRange = 0;
+		int mobSpawnCount = 0;
+		int distanceFromPlayer = 0;
+		int mobSpawnRange = 0;
+		int yaw = 0;
+		int facing = 0;
+		long currentTime;
+		long coolDownTime = 0;
+		double posX = 0;
+		double posY = 0;
+		double posZ = 0;
+		boolean spawnMobsBehindPlayer = false;
+		boolean mobOnlySpawnableAtNight = false;
+		boolean validMobConfigFound = false;
+		boolean spawnBehindPlayer = false;
+		Entity mob;
+		MobSettings mobConfig;
+
 		if (!world.isRemote)
 		{
 			EnumDifficulty difficulty = world.difficultySetting;
@@ -78,25 +105,8 @@ public class ItemMobSpawningStaff extends ItemMOYT
 				return itemStack;
 			}
 
-			String mobToSpawn = ItemNBTHelper.getString(itemStack, Names.NBTTags.STAFF_MOB_TO_SPAWN);
-			Iterator iterator = MobList.mobList.values().iterator();
-
-			int minMobsToSpawn = 0;
-			int maxMobsToSpawn = 0;
-			int spawnRangeFromPlayerMin = 0;
-			int spawnRangeFromPlayerMax = 0;
-			int spawnXPLevel = 0;
-			int staffCooldown = 0;
-			int mobsToBeSpawned = 0;
-			int mobsToBeSpawnedRange = 0;
-			int mobSpawnCount = 0;
-			int distanceFromPlayer = 0;
-			long currentTime;
-			long coolDownTime = 0;
-			boolean spawnMobsBehindPlayer = false;
-			boolean mobOnlySpawnableAtNight = false;
-			boolean validMobConfigFound = false;
-			Entity mob;
+			mobToSpawn = ItemNBTHelper.getString(itemStack, Names.NBTTags.STAFF_MOB_TO_SPAWN);
+			iterator = MobList.mobList.values().iterator();
 
 			if (Settings.General.useIndividualMobSpawnSettings)
 			{
@@ -137,7 +147,7 @@ public class ItemMobSpawningStaff extends ItemMOYT
 
 			while (iterator.hasNext())
 			{
-				MobSettings mobConfig = (MobSettings)iterator.next();
+				mobConfig = (MobSettings)iterator.next();
 
 				if (MobList.getKey(mobConfig).equals(mobToSpawn))
 				{
@@ -260,7 +270,7 @@ public class ItemMobSpawningStaff extends ItemMOYT
 				 * forums.
 				 */
 
-				int yaw = (int)entityPlayer.rotationYaw;
+				yaw = (int)entityPlayer.rotationYaw;
 
 				if (yaw < 0)              //due to the yaw running a -360 to positive 360
 				{
@@ -270,9 +280,9 @@ public class ItemMobSpawningStaff extends ItemMOYT
 				yaw+=22;     //centers coordinates you may want to drop this line
 				yaw%=360;  //and this one if you want a strict interpretation of the zones
 
-				int facing = yaw/45;   //  360degrees divided by 45 == 8 zones
+				facing = yaw/45;   //  360degrees divided by 45 == 8 zones
 
-				int mobSpawnRange = spawnRangeFromPlayerMax - spawnRangeFromPlayerMin;
+				mobSpawnRange = spawnRangeFromPlayerMax - spawnRangeFromPlayerMin;
 				if (mobSpawnRange <= 0)
 				{
 					distanceFromPlayer = 1;
@@ -282,15 +292,14 @@ public class ItemMobSpawningStaff extends ItemMOYT
 					distanceFromPlayer = world.rand.nextInt(mobSpawnRange) + 1;
 				}
 
-				boolean spawnBehindPlayer = false;
 				if (spawnMobsBehindPlayer)
 				{
 					spawnBehindPlayer = world.rand.nextBoolean();
 				}
 
-				double posX = entityPlayer.posX;
-				double posY = entityPlayer.posY;
-				double posZ = entityPlayer.posZ;
+				posX = entityPlayer.posX;
+				posY = entityPlayer.posY;
+				posZ = entityPlayer.posZ;
 
 				/* Calculate posz based on the facing value */
 				if (facing == 0 || facing == 1 || facing == 7)
@@ -317,7 +326,6 @@ public class ItemMobSpawningStaff extends ItemMOYT
 					}
 				}
 
-				/* Calculate posx based on facing value */
 				if (facing == 1 || facing == 2 || facing == 3)
 				{
 					if (spawnBehindPlayer)
