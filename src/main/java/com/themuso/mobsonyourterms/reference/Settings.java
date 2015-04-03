@@ -5,7 +5,6 @@ public class Settings
 	public static class General
 	{
 		public static boolean doMobSpawningGameRule;
-		public static int mobSpawnRuleEnableXPMultiply;
 		public static boolean useIndividualMobSpawnSettings;
 		public static int spawnXPLevelEasy;
 		public static int spawnXPLevelNormal;
