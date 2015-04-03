@@ -61,8 +61,8 @@ public class AnvilHandler
 			{
 				event.output = event.left.copy();
 				ItemNBTHelper.setString(event.output, Names.NBTTags.STAFF_MOB_TO_SPAWN, ItemNBTHelper.getString(event.right, Names.NBTTags.FRAGMENT_IS_FOR_MOB));
-				event.cost = 0;
-				event.materialCost = 1;
+				event.cost = mobConfig.staffFragmentAnvilLevels;
+				event.materialCost = mobConfig.staffFragmentAnvilCost;
 				return;
 			}
 		}
