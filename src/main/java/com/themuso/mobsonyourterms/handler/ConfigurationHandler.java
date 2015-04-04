@@ -3,6 +3,7 @@ package com.themuso.mobsonyourterms.handler;
 import java.io.File;
 import java.util.Iterator;
 
+import net.minecraft.entity.EntityList;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.config.Configuration;
 
@@ -589,18 +590,36 @@ public class ConfigurationHandler
 						{
 							LogHelper.warn("The primary staff creation item for mob " + key + " is the same as the primary staff creation item for mob " + subKey);
 						}
-						else if (config.staffCreationSecondaryItem.equals(subConfig.staffCreationSecondaryItem))
+
+						if (config.staffCreationSecondaryItem.equals(subConfig.staffCreationSecondaryItem))
 						{
 							LogHelper.warn("The secondary staff creation item for mob " + key + " is the same as the secondary staff creation item for mob " + subKey);
 						}
-						else if (config.staffCreationPrimaryItem.equals(subConfig.staffCreationSecondaryItem))
+
+						if (config.staffCreationPrimaryItem.equals(subConfig.staffCreationSecondaryItem))
 						{
 							LogHelper.warn("The primary staff creation item for mob " + key + " is the same as the secondary staff creation item for mob " + subKey);
 						}
-						else if (config.staffCreationSecondaryItem.equals(subConfig.staffCreationPrimaryItem))
+
+						if (config.staffCreationSecondaryItem.equals(subConfig.staffCreationPrimaryItem))
 						{
 							LogHelper.warn("The secondary staff creation item for mob " + key + " is the same as the primary staff creation item for mob " + subKey);
 						}
+
+						if (config.staffSpawnedMobDropsFragmentForEntity.equals(subConfig.staffSpawnedMobDropsFragmentForEntity))
+						{
+							LogHelper.warn("The staff fragments that will be dropped by " + key + " and " + subKey + " are for the same mob.");
+						}
+					}
+
+					if ((EntityList.stringToClassMapping.get(config.staffSpawnedMobDropsFragmentForEntity) == null)
+					  && (!config.staffSpawnedMobDropsFragmentForEntity.equals("Wither Skeleton")))
+					{
+						LogHelper.warn("No such entity named " + config.staffSpawnedMobDropsFragmentForEntity + ". Disabling the dropping of staff fragments by mob " + key + ".");
+						config.mobDropsStaffFragment = false;
+						config.staffSpawnedMobDropsFragmentForEntity = "";
+						MobList.mobList.remove(key);
+						MobList.mobList.put(key, config);
 					}
 				}
 			}
