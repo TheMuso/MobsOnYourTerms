@@ -247,6 +247,11 @@ public class ItemMobSpawningStaff extends ItemMOYT
 			}
 			mobsToBeSpawned = world.rand.nextInt(mobsToBeSpawnedRange) + minMobsToSpawn;
 
+			if (itemStack.getMaxDamage() > 0 && !entityPlayer.capabilities.isCreativeMode)
+			{
+				itemStack.damageItem(1, entityPlayer);
+			}
+
 			while (mobSpawnCount < mobsToBeSpawned)
 			{
 				/* Special case various entities that require custom variable settings */

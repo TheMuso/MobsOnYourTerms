@@ -47,6 +47,7 @@ public class AnvilHandler
 				LogHelper.info("Primary item enabled for entity " + MobList.getKey(mobConfig));
 				event.output = event.left.copy();
 				ItemNBTHelper.setString(event.output, Names.NBTTags.STAFF_MOB_TO_SPAWN, MobList.getKey(mobConfig));
+				event.output.getItem().setMaxDamage(mobConfig.staffCreationPrimaryItemUses);
 				event.cost = mobConfig.staffCreationPrimaryItemLevels;
 				event.materialCost = mobConfig.staffCreationPrimaryItemAmount;
 				return;
@@ -57,6 +58,7 @@ public class AnvilHandler
 				LogHelper.info("Secondary item enabled for entity " + MobList.getKey(mobConfig));
 				event.output = event.left.copy();
 				ItemNBTHelper.setString(event.output, Names.NBTTags.STAFF_MOB_TO_SPAWN, MobList.getKey(mobConfig));
+				event.output.getItem().setMaxDamage(mobConfig.staffCreationSecondaryItemUses);
 				event.cost = mobConfig.staffCreationSecondaryItemLevels;
 				event.materialCost = mobConfig.staffCreationSecondaryItemAmount;
 				return;
@@ -66,6 +68,7 @@ public class AnvilHandler
 			{
 				event.output = event.left.copy();
 				ItemNBTHelper.setString(event.output, Names.NBTTags.STAFF_MOB_TO_SPAWN, ItemNBTHelper.getString(event.right, Names.NBTTags.FRAGMENT_IS_FOR_MOB));
+				event.output.getItem().setMaxDamage(mobConfig.staffFragmentAnvilUses);
 				event.cost = mobConfig.staffFragmentAnvilLevels;
 				event.materialCost = mobConfig.staffFragmentAnvilAmount;
 				return;
