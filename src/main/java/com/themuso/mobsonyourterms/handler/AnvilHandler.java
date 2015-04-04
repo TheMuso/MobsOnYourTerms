@@ -62,12 +62,12 @@ public class AnvilHandler
 				return;
 			}
 			else if (Settings.General.enableStaffFragmentItem && (rightSlotItemName.equals(staffFragmentItemName)) && ItemNBTHelper.hasTag(event.right, Names.NBTTags.FRAGMENT_IS_FOR_MOB)
-			  && (event.right.stackSize >= mobConfig.staffFragmentAnvilCost) && (ItemNBTHelper.getString(event.right, Names.NBTTags.FRAGMENT_IS_FOR_MOB).equals(MobList.getKey(mobConfig))))
+			  && (event.right.stackSize >= mobConfig.staffFragmentAnvilAmount) && (ItemNBTHelper.getString(event.right, Names.NBTTags.FRAGMENT_IS_FOR_MOB).equals(MobList.getKey(mobConfig))))
 			{
 				event.output = event.left.copy();
 				ItemNBTHelper.setString(event.output, Names.NBTTags.STAFF_MOB_TO_SPAWN, ItemNBTHelper.getString(event.right, Names.NBTTags.FRAGMENT_IS_FOR_MOB));
 				event.cost = mobConfig.staffFragmentAnvilLevels;
-				event.materialCost = mobConfig.staffFragmentAnvilCost;
+				event.materialCost = mobConfig.staffFragmentAnvilAmount;
 				return;
 			}
 		}

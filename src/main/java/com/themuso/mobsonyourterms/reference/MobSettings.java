@@ -36,7 +36,7 @@ public class MobSettings
 	public int maxDroppedStaffFragmentsNormal;
 	public int minDroppedStaffFragmentsHard;
 	public int maxDroppedStaffFragmentsHard;
-	public int staffFragmentAnvilCost;
+	public int staffFragmentAnvilAmount;
 	public int staffFragmentAnvilLevels;
 	public int staffCooldownEasy;
 	public int staffCooldownNormal;
