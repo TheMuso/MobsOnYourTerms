@@ -58,8 +58,6 @@ public class MobDropHandler
 
 		if (!EntityNBTHelper.getBoolean(mob, Names.NBTTags.MOB_SPAWNED_WITH_STAFF))
 		{
-			/* We may also want to stop the dropping of XP as well */
-			event.setCanceled(true);
 			return;
 		}
 
