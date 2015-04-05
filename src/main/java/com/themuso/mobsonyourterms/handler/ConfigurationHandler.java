@@ -682,8 +682,6 @@ public class ConfigurationHandler
 					LogHelper.warn("Invalid item ID " + config.staffCreationPrimaryItem + "for staffCreationPrimaryItem for entity " + key + ", Disabling");
 					config.staffCreationPrimaryItem = "";
 					config.enableStaffCreationPrimaryItem = false;
-					MobList.mobList.remove(key);
-					MobList.mobList.put(key, config);
 				}
 
 				if (Item.itemRegistry.getObject(config.staffCreationSecondaryItem) == null)
@@ -692,8 +690,6 @@ public class ConfigurationHandler
 					LogHelper.warn("Invalid item ID " + config.staffCreationSecondaryItem + "for staffCreationSecondaryItem for entity " + key + ", disabling");
 					config.staffCreationSecondaryItem = "";
 					config.enableStaffCreationSecondaryItem = false;
-					MobList.mobList.remove(key);
-					MobList.mobList.put(key, config);
 				}
 
 				// Duplicate primary/secondary item checking.
@@ -740,8 +736,6 @@ public class ConfigurationHandler
 						LogHelper.warn("No such entity named " + config.staffSpawnedMobDropsFragmentForEntity + ". Disabling the dropping of staff fragments by mob " + key + ".");
 						config.mobDropsStaffFragment = false;
 						config.staffSpawnedMobDropsFragmentForEntity = "";
-						MobList.mobList.remove(key);
-						MobList.mobList.put(key, config);
 					}
 				}
 			}
