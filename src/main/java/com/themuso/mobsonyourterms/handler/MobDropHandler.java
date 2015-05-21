@@ -48,11 +48,6 @@ public class MobDropHandler
 			return;
 		}
 
-		if (!(event.entityLiving instanceof EntityMob))
-		{
-			return;
-		}
-
 		mob = event.entityLiving;
 		player = (EntityPlayer)event.source.getEntity();
 
