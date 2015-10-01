@@ -22,7 +22,7 @@ group= "com.themuso.mobsonyourterms" // http://maven.apache.org/guides/mini/guid
 archivesBaseName = "MobsOnYourTerms"
 
 minecraft {
-    version = "1.7.10-10.13.2.1230"
+    version = "1.7.10-10.13.4.1448-1.7.10"
 }
 
 dependencies {
