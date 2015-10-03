@@ -7,6 +7,7 @@ import java.util.List;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.monster.EntitySkeleton;
+import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChatComponentText;
@@ -267,7 +268,7 @@ public class ItemMobSpawningStaff extends ItemMOYT
 
 				if (!mob instanceof IMob)
 				{
-					entityPlayer.addChatComponentMessage(new ChatComponentText("This mob is not hostile.");
+					entityPlayer.addChatComponentMessage(new ChatComponentText("This mob is not hostile."));
 					return;
 				}
 
