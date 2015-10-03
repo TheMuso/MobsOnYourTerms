@@ -15,11 +15,11 @@ public class RuleHandler
 	{
 		if (event.entity instanceof EntityPlayer)
 		{
-			if (!event.world.isRemote)
+			if ((!event.world.isRemote) && (!Settings.General.spawnHostileMobs))
 			{
 				if (event.world.getGameRules().getGameRuleBooleanValue("doMobSpawning"));
 				{
-					event.world.getGameRules().setOrCreateGameRule("doMobSpawning", Boolean.toString(Settings.General.doMobSpawningGameRule));
+					event.world.getGameRules().setOrCreateGameRule("doMobSpawning", Boolean.toString(false));
 				}
 			}
 		}

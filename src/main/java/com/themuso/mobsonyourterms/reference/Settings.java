@@ -4,7 +4,7 @@ public class Settings
 {
 	public static class General
 	{
-		public static boolean doMobSpawningGameRule;
+		public static boolean spawnHostileMobs;
 		public static boolean useIndividualMobSpawnSettings;
 		public static int spawnXPLevelEasy;
 		public static int spawnXPLevelNormal;
