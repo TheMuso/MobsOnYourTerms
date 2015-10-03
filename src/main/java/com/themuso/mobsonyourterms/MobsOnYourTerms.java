@@ -54,13 +54,13 @@ public class MobsOnYourTerms
 	@Mod.EventHandler
 	public void postInit(FMLPostInitializationEvent event)
 	{
+		ConfigurationHandler.validate();
 		LogHelper.info("Post Init complete");
 	}
 
 	@Mod.EventHandler
 	public void loadComplete(FMLLoadCompleteEvent event)
 	{
-		ConfigurationHandler.validate();
 		LogHelper.info("Load complete");
 	}
 }
