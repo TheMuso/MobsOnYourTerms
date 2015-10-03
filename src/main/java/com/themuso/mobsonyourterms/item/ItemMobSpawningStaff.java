@@ -266,10 +266,10 @@ public class ItemMobSpawningStaff extends ItemMOYT
 					mob = EntityList.createEntityByName(mobToSpawn, world);
 				}
 
-				if (!mob instanceof IMob)
+				if (!(mob instanceof IMob))
 				{
 					entityPlayer.addChatComponentMessage(new ChatComponentText("This mob is not hostile."));
-					return;
+					return itemStack;
 				}
 
 				/*
