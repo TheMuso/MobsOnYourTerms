@@ -265,6 +265,12 @@ public class ItemMobSpawningStaff extends ItemMOYT
 					mob = EntityList.createEntityByName(mobToSpawn, world);
 				}
 
+				if (!mob instanceof IMob)
+				{
+					entityPlayer.addChatComponentMessage(new ChatComponentText("This mob is not hostile.");
+					return;
+				}
+
 				/*
 				 * Z = North/South, south being positive.
 				 * X = West/East, east being positive.
