@@ -4,6 +4,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChatComponentText;
@@ -56,7 +57,16 @@ public class MobDropHandler
 			return;
 		}
 
-		mobName = EntityList.getEntityString(mob);
+		if ((mob instanceof EntitySkeleton) &&
+		    (((EntitySkeleton)mob).getSkeletonType() == 1))
+		{
+			mobName = "Wither Skeleton";
+		}
+		else
+		{
+			mobName = EntityList.getEntityString(mob);
+		}
+
 		mobConfig = MobList.mobList.get(mobName);
 
 		if (mobConfig == null)
