@@ -60,7 +60,7 @@ public class ConfigurationHandler
 
 		// Mob spawner settings
 		Settings.Spawner.changeMobSpawnerBehavior = configuration.getBoolean("changeMobSpawnerBehavior", "Mob Spawner Settings", true, "Whether mob spawner characteristics are changed.");
-		Settings.Spawner.activatingRangeFromPlayer = configuration.getInt("activatingRangeFromPlayer", "Mob Spawner Settings", 4, 2, 32, "The distance in blocks a player needs to bbe from the spawner to activate it.");
+		Settings.Spawner.activatingRangeFromPlayer = configuration.getInt("activatingRangeFromPlayer", "Mob Spawner Settings", 6, 2, 32, "The distance in blocks a player needs to bbe from the spawner to activate it.");
 		Settings.Spawner.spawnRange = configuration.getInt("spawnRange", "Mob Spawner Settings", 4, 2, 32, "The range in blocks where mobs can be spawned.");
 
 		// Mob settings
