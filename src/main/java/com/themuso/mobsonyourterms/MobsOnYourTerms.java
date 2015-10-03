@@ -3,7 +3,7 @@ package com.themuso.mobsonyourterms;
 import net.minecraftforge.common.MinecraftForge;
 
 import com.themuso.mobsonyourterms.handler.AnvilHandler;
-import com.themuso.mobsonyourterms.handler.ChunkLoadEventHandler;
+import com.themuso.mobsonyourterms.handler.ChunkWatchEventHandler;
 import com.themuso.mobsonyourterms.handler.ConfigurationHandler;
 import com.themuso.mobsonyourterms.handler.MobDropHandler;
 import com.themuso.mobsonyourterms.handler.RuleHandler;
@@ -29,7 +29,7 @@ public class MobsOnYourTerms
 	{
 		ConfigurationHandler.init(event.getSuggestedConfigurationFile());
 
-		ChunkLoadEventHandler chunkEventHandler = new ChunkLoadEventHandler();
+		ChunkWatchEventHandler chunkEventHandler = new ChunkWatchEventHandler();
 		RuleHandler ruleEventHandler = new RuleHandler();
 		AnvilHandler anvilHandler = new AnvilHandler();
 		MobDropHandler mobDropHandler = new MobDropHandler();
