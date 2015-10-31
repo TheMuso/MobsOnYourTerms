@@ -31,6 +31,7 @@ public class ConfigurationHandler
 		// General settings
 		Settings.General.spawnHostileMobs = configuration.getBoolean("spawnHostileMobs", Configuration.CATEGORY_GENERAL, false, "Whether hostile mobs spawn in the world normally.");
 		Settings.General.useIndividualMobSpawnSettings = configuration.getBoolean("useIndividualMobSpawnSettings", Configuration.CATEGORY_GENERAL, false, "Use individual mob spawn settings.");
+		Settings.General.registerWitherSkeletonEntity = configuration.getBoolean("registerWitherSkeletonEntity", Configuration.CATEGORY_GENERAL, true, "Whether to register the Wither Skeleton as a separate entity. Enabling this option will allow the player to craft Wither Skeleton mob spawners.");
 		Settings.General.spawnXPLevelEasy = configuration.getInt("spawnXPLevelEasy", Configuration.CATEGORY_GENERAL, 5, 1, 100, "The required amount of levels to be able to spawn this mob on easy difficulty.");
 		Settings.General.spawnXPLevelNormal = configuration.getInt("spawnXPLevelNormal", Configuration.CATEGORY_GENERAL, 7, 1, 100, "The required amount of levels to be able to spawn this mob on normal difficulty.");
 		Settings.General.spawnXPLevelHard = configuration.getInt("spawnXPLevelHard", Configuration.CATEGORY_GENERAL, 9, 1, 100, "The required amount of levels to be able to spawn this mob on hard difficulty.");

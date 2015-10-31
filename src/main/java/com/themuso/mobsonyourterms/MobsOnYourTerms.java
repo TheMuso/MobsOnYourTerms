@@ -2,6 +2,7 @@ package com.themuso.mobsonyourterms;
 
 import net.minecraftforge.common.MinecraftForge;
 
+import com.themuso.mobsonyourterms.entity.EntityWitherSkeleton;
 import com.themuso.mobsonyourterms.handler.AnvilHandler;
 import com.themuso.mobsonyourterms.handler.ChunkWatchEventHandler;
 import com.themuso.mobsonyourterms.handler.ConfigurationHandler;
@@ -10,6 +11,7 @@ import com.themuso.mobsonyourterms.handler.RuleHandler;
 import com.themuso.mobsonyourterms.init.ModItems;
 import com.themuso.mobsonyourterms.init.Recipes;
 import com.themuso.mobsonyourterms.reference.Reference;
+import com.themuso.mobsonyourterms.reference.Settings;
 import com.themuso.mobsonyourterms.reference.VanillaMobSettings;
 import com.themuso.mobsonyourterms.utility.LogHelper;
 
@@ -18,6 +20,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLLoadCompleteEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.registry.EntityRegistry;
 
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION)
 public class MobsOnYourTerms 
@@ -30,6 +33,11 @@ public class MobsOnYourTerms
 	{
 		VanillaMobSettings.initDefaults();
 		ConfigurationHandler.init(event.getSuggestedConfigurationFile());
+
+		if (Settings.General.registerWitherSkeletonEntity)
+		{
+			EntityRegistry.registerGlobalEntityID(EntityWitherSkeleton.class, "WitherSkeleton", EntityRegistry.findGlobalUniqueEntityId());
+		}
 
 		ChunkWatchEventHandler chunkEventHandler = new ChunkWatchEventHandler();
 		RuleHandler ruleEventHandler = new RuleHandler();
