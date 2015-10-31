@@ -21,7 +21,7 @@ public class ConfigurationHandler
 	{
 		if (configuration == null)
 		{
-			configuration = new Configuration(configFile);
+			configuration = new Configuration(configFile, true);
 			loadConfiguration();
 		}
 	}
@@ -29,36 +29,36 @@ public class ConfigurationHandler
 	private static void loadConfiguration()
 	{
 		// General settings
-		Settings.General.spawnHostileMobs = configuration.getBoolean("spawnHostileMobs", Configuration.CATEGORY_GENERAL, false, "Whether hostile mobs spawn in the world normally.");
-		Settings.General.useIndividualMobSpawnSettings = configuration.getBoolean("useIndividualMobSpawnSettings", Configuration.CATEGORY_GENERAL, false, "Use individual mob spawn settings.");
-		Settings.General.registerWitherSkeletonEntity = configuration.getBoolean("registerWitherSkeletonEntity", Configuration.CATEGORY_GENERAL, true, "Whether to register the Wither Skeleton as a separate entity. Enabling this option will allow the player to craft Wither Skeleton mob spawners.");
-		Settings.General.spawnXPLevelEasy = configuration.getInt("spawnXPLevelEasy", Configuration.CATEGORY_GENERAL, 5, 1, 100, "The required amount of levels to be able to spawn this mob on easy difficulty.");
-		Settings.General.spawnXPLevelNormal = configuration.getInt("spawnXPLevelNormal", Configuration.CATEGORY_GENERAL, 7, 1, 100, "The required amount of levels to be able to spawn this mob on normal difficulty.");
-		Settings.General.spawnXPLevelHard = configuration.getInt("spawnXPLevelHard", Configuration.CATEGORY_GENERAL, 9, 1, 100, "The required amount of levels to be able to spawn this mob on hard difficulty.");
-		Settings.General.minMobsToSpawnEasy = configuration.getInt("minMobsToSpawnEasy", Configuration.CATEGORY_GENERAL, 1, 1 ,10, "minimum number of mobs to spawn on easy.");
-		Settings.General.maxMobsToSpawnEasy = configuration.getInt("maxMobsToSpawnEasy", Configuration.CATEGORY_GENERAL, 1, 1, 10, "Maximum number of mobs to spawn on easy.");
-		Settings.General.minMobsToSpawnNormal = configuration.getInt("minMobsToSpawnNormal", Configuration.CATEGORY_GENERAL, 1, 1, 10, "minimum number of mobs to spawn on normal.");
-		Settings.General.maxMobsToSpawnNormal = configuration.getInt("maxMobsToSpawnNormal", Configuration.CATEGORY_GENERAL, 2, 1, 10, "Maximum number of mobs to spawn on normal.");
-		Settings.General.minMobsToSpawnHard = configuration.getInt("minMobsToSpawnHard", Configuration.CATEGORY_GENERAL, 1, 1, 10, "minimum number of mobs to spawn on hard.");
-		Settings.General.maxMobsToSpawnHard = configuration.getInt("maxMobsToSpawnHard", Configuration.CATEGORY_GENERAL, 3, 1, 10, "Maximum number of mobs to spawn on hard.");
-		Settings.General.spawnRangeFromPlayerMinEasy = configuration.getInt("spawnRangeFromPlayerMinEasy", Configuration.CATEGORY_GENERAL, 2, 1, 10, "Minimum range that a mob can spawn from the player on easy.");
-		Settings.General.spawnRangeFromPlayerMaxEasy = configuration.getInt("spawnRangeFromPlayerMaxEasy", Configuration.CATEGORY_GENERAL, 5, 1, 10, "Maximum range that a mob can spawn from the player in easy.");
-		Settings.General.spawnRangeFromPlayerMinNormal = configuration.getInt("spawnRangeFromPlayerMinNormal", Configuration.CATEGORY_GENERAL, 1, 1, 10, "Minimum range that a mob can spawn from the player in normal.");
-		Settings.General.spawnRangeFromPlayerMaxNormal = configuration.getInt("spawnRangeFromPlayerMaxNormal", Configuration.CATEGORY_GENERAL, 3, 1, 10, "Maximum range that a mob can spawn from a player in normal.");
-		Settings.General.spawnRangeFromPlayerMinHard = configuration.getInt("spawnRangeFromPlayerMinHard", Configuration.CATEGORY_GENERAL, 1, 1, 10, "Minimum range that a mob can spawn from a player in hard.");
-		Settings.General.spawnRangeFromPlayerMaxHard = configuration.getInt("spawnRangeFromPlayerMaxHard", Configuration.CATEGORY_GENERAL, 2, 1, 10, "Maximum range that a mob can spawn from a player in hard.");
-		Settings.General.spawnMobsBehindPlayerEasy = configuration.getBoolean("spawnMobsBehindPlayerEasy", Configuration.CATEGORY_GENERAL, false, "Whether mobs can be spawned behind the player on easy difficulty.");
-		Settings.General.spawnMobsBehindPlayerNormal = configuration.getBoolean("spawnMobsBehindPlayerNormal", Configuration.CATEGORY_GENERAL, true, "Whether mobs can be spawned behind the player on normal difficulty.");
-		Settings.General.spawnMobsBehindPlayerHard = configuration.getBoolean("spawnMobsBehindPlayerHard", Configuration.CATEGORY_GENERAL, true, "Whether mobs can be spawned behind the player on hard difficulty.");
-		Settings.General.staffCooldownEasy = configuration.getInt("staffCooldownEasy", Configuration.CATEGORY_GENERAL, 0, 0, 30, "THe amount of time the player must wait before the staff can be used to spawn another mob on easy difficulty.");
-		Settings.General.staffCooldownNormal = configuration.getInt("staffCooldownNormal", Configuration.CATEGORY_GENERAL, 5, 0, 30, "THe amount of time the player must wait before the staff can be used to spawn another mob on normal difficulty.");
-		Settings.General.staffCooldownHard = configuration.getInt("staffCooldownHard", Configuration.CATEGORY_GENERAL, 10, 0, 30, "THe amount of time the player must wait before the staff can be used to spawn another mob on hard difficulty.");
-		Settings.General.mobOnlySpawnableAtNightEasy = configuration.getBoolean("mobOnlySpawnableAtNightEasy", Configuration.CATEGORY_GENERAL, false, "SHould the mob only be spawnable with the staff at night on easy difficulty.");
-		Settings.General.mobOnlySpawnableAtNightNormal = configuration.getBoolean("mobOnlySpawnableAtNightNormal", Configuration.CATEGORY_GENERAL, true, "SHould the mob only be spawnable with the staff at night on normal difficulty.");
-		Settings.General.mobOnlySpawnableAtNightHard = configuration.getBoolean("mobOnlySpawnableAtNightHard", Configuration.CATEGORY_GENERAL, true, "SHould the mob only be spawnable with the staff at night on hard difficulty.");
-		Settings.General.enableStaffFragmentItem = configuration.getBoolean("enableStaffFragmentItem", Configuration.CATEGORY_GENERAL, true, "Enable the staff fragment item required for the mob spawning staff recipe. If disabled, the staff crafting recipe will be disabled.");
-		Settings.General.registerMobSpawnerRecipes = configuration.getBoolean("registerMobSpawnerRecipes", Configuration.CATEGORY_GENERAL, true, "Should recipes to make mob spawners get registered.");
-		Settings.General.staffHasOwner = configuration.getBoolean("staffHasOwner", Configuration.CATEGORY_GENERAL, true, "Determines whether a mob spawning staff has an owner after first use.");
+		Settings.General.spawnHostileMobs = configuration.getBoolean("spawnHostileMobs", "General", false, "Whether hostile mobs spawn in the world normally.");
+		Settings.General.useIndividualMobSpawnSettings = configuration.getBoolean("useIndividualMobSpawnSettings", "General", false, "Use individual mob spawn settings.");
+		Settings.General.registerWitherSkeletonEntity = configuration.getBoolean("registerWitherSkeletonEntity", "General", true, "Whether to register the Wither Skeleton as a separate entity. Enabling this option will allow the player to craft Wither Skeleton mob spawners.");
+		Settings.General.spawnXPLevelEasy = configuration.getInt("spawnXPLevelEasy", "General", 5, 1, 100, "The required amount of levels to be able to spawn this mob on easy difficulty.");
+		Settings.General.spawnXPLevelNormal = configuration.getInt("spawnXPLevelNormal", "General", 7, 1, 100, "The required amount of levels to be able to spawn this mob on normal difficulty.");
+		Settings.General.spawnXPLevelHard = configuration.getInt("spawnXPLevelHard", "General", 9, 1, 100, "The required amount of levels to be able to spawn this mob on hard difficulty.");
+		Settings.General.minMobsToSpawnEasy = configuration.getInt("minMobsToSpawnEasy", "General", 1, 1 ,10, "minimum number of mobs to spawn on easy.");
+		Settings.General.maxMobsToSpawnEasy = configuration.getInt("maxMobsToSpawnEasy", "General", 1, 1, 10, "Maximum number of mobs to spawn on easy.");
+		Settings.General.minMobsToSpawnNormal = configuration.getInt("minMobsToSpawnNormal", "General", 1, 1, 10, "minimum number of mobs to spawn on normal.");
+		Settings.General.maxMobsToSpawnNormal = configuration.getInt("maxMobsToSpawnNormal", "General", 2, 1, 10, "Maximum number of mobs to spawn on normal.");
+		Settings.General.minMobsToSpawnHard = configuration.getInt("minMobsToSpawnHard", "General", 1, 1, 10, "minimum number of mobs to spawn on hard.");
+		Settings.General.maxMobsToSpawnHard = configuration.getInt("maxMobsToSpawnHard", "General", 3, 1, 10, "Maximum number of mobs to spawn on hard.");
+		Settings.General.spawnRangeFromPlayerMinEasy = configuration.getInt("spawnRangeFromPlayerMinEasy", "General", 2, 1, 10, "Minimum range that a mob can spawn from the player on easy.");
+		Settings.General.spawnRangeFromPlayerMaxEasy = configuration.getInt("spawnRangeFromPlayerMaxEasy", "General", 5, 1, 10, "Maximum range that a mob can spawn from the player in easy.");
+		Settings.General.spawnRangeFromPlayerMinNormal = configuration.getInt("spawnRangeFromPlayerMinNormal", "General", 1, 1, 10, "Minimum range that a mob can spawn from the player in normal.");
+		Settings.General.spawnRangeFromPlayerMaxNormal = configuration.getInt("spawnRangeFromPlayerMaxNormal", "General", 3, 1, 10, "Maximum range that a mob can spawn from a player in normal.");
+		Settings.General.spawnRangeFromPlayerMinHard = configuration.getInt("spawnRangeFromPlayerMinHard", "General", 1, 1, 10, "Minimum range that a mob can spawn from a player in hard.");
+		Settings.General.spawnRangeFromPlayerMaxHard = configuration.getInt("spawnRangeFromPlayerMaxHard", "General", 2, 1, 10, "Maximum range that a mob can spawn from a player in hard.");
+		Settings.General.spawnMobsBehindPlayerEasy = configuration.getBoolean("spawnMobsBehindPlayerEasy", "General", false, "Whether mobs can be spawned behind the player on easy difficulty.");
+		Settings.General.spawnMobsBehindPlayerNormal = configuration.getBoolean("spawnMobsBehindPlayerNormal", "General", true, "Whether mobs can be spawned behind the player on normal difficulty.");
+		Settings.General.spawnMobsBehindPlayerHard = configuration.getBoolean("spawnMobsBehindPlayerHard", "General", true, "Whether mobs can be spawned behind the player on hard difficulty.");
+		Settings.General.staffCooldownEasy = configuration.getInt("staffCooldownEasy", "General", 0, 0, 30, "THe amount of time the player must wait before the staff can be used to spawn another mob on easy difficulty.");
+		Settings.General.staffCooldownNormal = configuration.getInt("staffCooldownNormal", "General", 5, 0, 30, "THe amount of time the player must wait before the staff can be used to spawn another mob on normal difficulty.");
+		Settings.General.staffCooldownHard = configuration.getInt("staffCooldownHard", "General", 10, 0, 30, "THe amount of time the player must wait before the staff can be used to spawn another mob on hard difficulty.");
+		Settings.General.mobOnlySpawnableAtNightEasy = configuration.getBoolean("mobOnlySpawnableAtNightEasy", "General", false, "SHould the mob only be spawnable with the staff at night on easy difficulty.");
+		Settings.General.mobOnlySpawnableAtNightNormal = configuration.getBoolean("mobOnlySpawnableAtNightNormal", "General", true, "SHould the mob only be spawnable with the staff at night on normal difficulty.");
+		Settings.General.mobOnlySpawnableAtNightHard = configuration.getBoolean("mobOnlySpawnableAtNightHard", "General", true, "SHould the mob only be spawnable with the staff at night on hard difficulty.");
+		Settings.General.enableStaffFragmentItem = configuration.getBoolean("enableStaffFragmentItem", "General", true, "Enable the staff fragment item required for the mob spawning staff recipe. If disabled, the staff crafting recipe will be disabled.");
+		Settings.General.registerMobSpawnerRecipes = configuration.getBoolean("registerMobSpawnerRecipes", "General", true, "Should recipes to make mob spawners get registered.");
+		Settings.General.staffHasOwner = configuration.getBoolean("staffHasOwner", "General", true, "Determines whether a mob spawning staff has an owner after first use.");
 
 		// Mob spawner settings
 		Settings.Spawner.changeMobSpawnerBehavior = configuration.getBoolean("changeMobSpawnerBehavior", "Mob Spawner Settings", true, "Whether mob spawner characteristics are changed.");
