@@ -4,6 +4,7 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
+import com.themuso.mobsonyourterms.item.CreativeTabMOYT;
 import com.themuso.mobsonyourterms.reference.Reference;
 
 import cpw.mods.fml.relauncher.Side;
