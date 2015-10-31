@@ -195,7 +195,7 @@ public class ConfigurationHandler
 					}
 
 					/* We special case the Wither Skeleton config as no separate entity exists for it */
-					if (!config.staffSpawnedMobDropsFragmentForEntity.equals("Wither Skeleton")
+					if (!config.staffSpawnedMobDropsFragmentForEntity.equals("WitherSkeleton")
 					  && (EntityList.stringToClassMapping.get(config.staffSpawnedMobDropsFragmentForEntity) == null))
 					{
 						LogHelper.warn("No such entity named " + config.staffSpawnedMobDropsFragmentForEntity + ". Disabling the dropping of staff fragments by mob " + key + ".");

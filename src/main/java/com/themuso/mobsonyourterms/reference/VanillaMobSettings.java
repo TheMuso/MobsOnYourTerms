@@ -484,7 +484,7 @@ public class VanillaMobSettings
 		mobSet.staffCreationSecondaryItemLevels = 1;
 		mobSet.staffCreationSecondaryItemUses = 0;
 		mobSet.mobDropsStaffFragment = true;
-		mobSet.staffSpawnedMobDropsFragmentForEntity = "Wither Skeleton";
+		mobSet.staffSpawnedMobDropsFragmentForEntity = "WitherSkeleton";
 		mobSet.minDroppedStaffFragmentsEasy = 1;
 		mobSet.maxDroppedStaffFragmentsEasy = 3;
 		mobSet.minDroppedStaffFragmentsNormal = 1;
@@ -549,7 +549,7 @@ public class VanillaMobSettings
 		mobSet.mobOnlySpawnableAtNightEasy = true;
 		mobSet.mobOnlySpawnableAtNightNormal = true;
 		mobSet.mobOnlySpawnableAtNightHard = true;
-		defaults.put("Wither Skeleton", mobSet);	
+		defaults.put("WitherSkeleton", mobSet);	
 
 		// Enderman
 		mobSet = new MobSettings();

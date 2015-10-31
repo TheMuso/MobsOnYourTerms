@@ -256,7 +256,7 @@ public class ItemMobSpawningStaff extends ItemMOYT
 			while (mobSpawnCount < mobsToBeSpawned)
 			{
 				/* Special case various entities that require custom variable settings */
-				if (mobToSpawn.equals("Wither Skeleton"))
+				if (mobToSpawn.equals("WitherSkeleton"))
 				{
 					mob = EntityList.createEntityByName("Skeleton", world);
 					((EntitySkeleton)mob).setSkeletonType(1);

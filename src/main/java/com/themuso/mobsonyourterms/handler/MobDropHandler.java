@@ -60,7 +60,7 @@ public class MobDropHandler
 		if ((mob instanceof EntitySkeleton) &&
 		    (((EntitySkeleton)mob).getSkeletonType() == 1))
 		{
-			mobName = "Wither Skeleton";
+			mobName = "WitherSkeleton";
 		}
 		else
 		{
