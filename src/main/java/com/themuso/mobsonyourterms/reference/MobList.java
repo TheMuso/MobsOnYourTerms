@@ -2,6 +2,8 @@ package com.themuso.mobsonyourterms.reference;
 
 import java.util.HashMap;
 
+import com.themuso.mobsonyourterms.reference.MobSettings;
+
 public class MobList
 {
 	public static HashMap<String, MobSettings> mobList = new HashMap<String, MobSettings>();

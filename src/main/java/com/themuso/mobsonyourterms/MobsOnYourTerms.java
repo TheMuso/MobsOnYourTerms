@@ -10,6 +10,7 @@ import com.themuso.mobsonyourterms.handler.RuleHandler;
 import com.themuso.mobsonyourterms.init.ModItems;
 import com.themuso.mobsonyourterms.init.Recipes;
 import com.themuso.mobsonyourterms.reference.Reference;
+import com.themuso.mobsonyourterms.reference.VanillaMobSettings;
 import com.themuso.mobsonyourterms.utility.LogHelper;
 
 import cpw.mods.fml.common.Mod;
@@ -27,6 +28,7 @@ public class MobsOnYourTerms
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
+		VanillaMobSettings.initDefaults();
 		ConfigurationHandler.init(event.getSuggestedConfigurationFile());
 
 		ChunkWatchEventHandler chunkEventHandler = new ChunkWatchEventHandler();
