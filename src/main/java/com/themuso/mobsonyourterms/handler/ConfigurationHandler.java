@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.config.Configuration;
@@ -94,6 +95,33 @@ public class ConfigurationHandler
 		}
 	}
 
+	public static void loadExtraMobConfig()
+	{
+		Class mobClass;
+		MobSettings mobConfig;
+
+		Settings.setExtraMobDefaults();
+
+		for (Object mob : EntityList.stringToClassMapping.keySet())
+		{
+			if (!MobList.mobList.containsKey((String)mob))
+			{
+				mobClass = (Class)EntityList.stringToClassMapping.get(mob);
+
+				if (entityImplementsIMob(mobClass))
+				{
+					mobConfig = populateConfig((String)mob, Settings.extraMobDefaultConfig);
+					MobList.mobList.put((String)mob, mobConfig);
+				}
+			}
+		}
+
+		if (configuration.hasChanged())
+		{
+			configuration.save();
+		}
+	}
+
 	public static void validate()
 	{
 		Iterator iterator;
@@ -174,6 +202,38 @@ public class ConfigurationHandler
 				}
 			}
 		}
+	}
+
+	private static boolean entityImplementsIMob(Class entityClass)
+	{
+		Class currentClass = entityClass;
+		Class[] interfaces;
+
+		while (currentClass != null)
+		{
+			if (currentClass.getName().equals("net.minecraft.entity.monster.IMob"))
+			{
+				return true;
+			}
+
+			interfaces = currentClass.getInterfaces();
+
+			for (int i = 0; i < interfaces.length; i++)
+			{
+				if (interfaces[i].getName().equals("net.minecraft.entity.monster.IMob"))
+				{
+					return true;
+				}
+				else if (entityImplementsIMob(interfaces[i]))
+				{
+					return true;
+				}
+			}
+
+			currentClass = currentClass.getSuperclass();
+		}
+
+		return false;
 	}
 
 	private static MobSettings populateConfig(String mobName, MobSettings mobSet)

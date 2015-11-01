@@ -57,6 +57,7 @@ public class MobsOnYourTerms
 	@Mod.EventHandler
 	public void Init(FMLInitializationEvent event)
 	{
+		ConfigurationHandler.loadExtraMobConfig();
 		Recipes.init();
 		LogHelper.info("Init complete");
 	}
