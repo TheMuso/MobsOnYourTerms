@@ -1,8 +1,8 @@
 package com.themuso.mobsonyourterms.handler;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.ChatComponentText;
-import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import net.minecraft.entity.EnumCreatureType;
+import net.minecraft.world.World;
+import net.minecraftforge.event.world.WorldEvent;
 
 import com.themuso.mobsonyourterms.reference.Settings;
 
@@ -11,17 +11,11 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 public class RuleHandler
 {
 	@SubscribeEvent
-	public void adjustGameRules(EntityJoinWorldEvent event)
+	public void adjustGameRules(WorldEvent.PotentialSpawns event)
 	{
-		if (event.entity instanceof EntityPlayer)
+		if ((!event.world.isRemote) && (!Settings.General.spawnHostileMobs) && (event.type == EnumCreatureType.monster))
 		{
-			if ((!event.world.isRemote) && (!Settings.General.spawnHostileMobs))
-			{
-				if (event.world.getGameRules().getGameRuleBooleanValue("doMobSpawning"));
-				{
-					event.world.getGameRules().setOrCreateGameRule("doMobSpawning", Boolean.toString(false));
-				}
-			}
+			event.setCanceled(true);
 		}
 	}
 }
