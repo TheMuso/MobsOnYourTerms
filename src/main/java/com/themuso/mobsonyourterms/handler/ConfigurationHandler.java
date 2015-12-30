@@ -37,8 +37,8 @@ public class ConfigurationHandler
 
 	private static void loadConfiguration()
 	{
-		List<String> settingsPropOrder = new ArrayList();
-		List<String> spawnerSettingsPropOrder = new ArrayList();
+		List<String> settingsPropOrder = new ArrayList<String>();
+		List<String> spawnerSettingsPropOrder = new ArrayList<String>();
 		MobSettings mobConfig, mobDefaultSet;
 
 		// General settings
@@ -239,7 +239,7 @@ public class ConfigurationHandler
 	private static MobSettings populateConfig(String mobName, MobSettings mobSet)
 	{
 		MobSettings mobConfig = new MobSettings();
-		List<String> mobSettingsPropOrder = new ArrayList();
+		List<String> mobSettingsPropOrder = new ArrayList<String>();
 
 		mobConfig.spawnXPLevelEasy = configuration.getInt(addToPropOrder(mobSettingsPropOrder, "spawnXPLevelEasy"), "Mobs." + mobName, mobSet.spawnXPLevelEasy, 1, 100, "The required amount of levels to be able to spawn this mob on easy difficulty.");
 		mobConfig.spawnXPLevelNormal = configuration.getInt(addToPropOrder(mobSettingsPropOrder, "spawnXPLevelNormal"), "Mobs." + mobName, mobSet.spawnXPLevelNormal, 1, 100, "The required amount of levels to be able to spawn this mob on normal difficulty.");
