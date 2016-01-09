@@ -6,8 +6,8 @@ import com.themuso.mobsonyourterms.entity.EntityWitherSkeleton;
 import com.themuso.mobsonyourterms.handler.AnvilHandler;
 import com.themuso.mobsonyourterms.handler.ChunkWatchEventHandler;
 import com.themuso.mobsonyourterms.handler.ConfigurationHandler;
+import com.themuso.mobsonyourterms.handler.EntitySpawnerHandler;
 import com.themuso.mobsonyourterms.handler.MobDropHandler;
-import com.themuso.mobsonyourterms.handler.RuleHandler;
 import com.themuso.mobsonyourterms.init.ModItems;
 import com.themuso.mobsonyourterms.init.Recipes;
 import com.themuso.mobsonyourterms.reference.Reference;
@@ -40,14 +40,14 @@ public class MobsOnYourTerms
 		}
 
 		ChunkWatchEventHandler chunkEventHandler = new ChunkWatchEventHandler();
-		RuleHandler ruleEventHandler = new RuleHandler();
 		AnvilHandler anvilHandler = new AnvilHandler();
 		MobDropHandler mobDropHandler = new MobDropHandler();
+		EntitySpawnerHandler spawnerHandler = new EntitySpawnerHandler();
 
 		MinecraftForge.EVENT_BUS.register(chunkEventHandler);
-		MinecraftForge.EVENT_BUS.register(ruleEventHandler);
 		MinecraftForge.EVENT_BUS.register(anvilHandler);
 		MinecraftForge.EVENT_BUS.register(mobDropHandler);
+		MinecraftForge.EVENT_BUS.register(spawnerHandler);
 
 		ModItems.init();
 
