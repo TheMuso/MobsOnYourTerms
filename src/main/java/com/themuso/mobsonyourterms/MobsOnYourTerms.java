@@ -2,7 +2,6 @@ package com.themuso.mobsonyourterms;
 
 import net.minecraftforge.common.MinecraftForge;
 
-import com.themuso.mobsonyourterms.entity.EntityWitherSkeleton;
 import com.themuso.mobsonyourterms.handler.AnvilHandler;
 import com.themuso.mobsonyourterms.handler.ChunkWatchEventHandler;
 import com.themuso.mobsonyourterms.handler.ConfigurationHandler;
@@ -33,11 +32,6 @@ public class MobsOnYourTerms
 	{
 		VanillaMobSettings.initDefaults();
 		ConfigurationHandler.init(event.getSuggestedConfigurationFile());
-
-		if (Settings.General.registerWitherSkeletonEntity)
-		{
-			EntityRegistry.registerGlobalEntityID(EntityWitherSkeleton.class, "WitherSkeleton", EntityRegistry.findGlobalUniqueEntityId());
-		}
 
 		ChunkWatchEventHandler chunkEventHandler = new ChunkWatchEventHandler();
 		RuleHandler ruleEventHandler = new RuleHandler();

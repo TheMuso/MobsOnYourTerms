@@ -6,7 +6,6 @@ public class Settings
 	{
 		public static boolean spawnHostileMobs;
 		public static boolean useIndividualMobSpawnSettings;
-		public static boolean registerWitherSkeletonEntity;
 		public static int spawnXPLevelEasy;
 		public static int spawnXPLevelNormal;
 		public static int spawnXPLevelHard;
