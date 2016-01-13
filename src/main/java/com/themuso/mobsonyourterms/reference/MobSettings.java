@@ -22,11 +22,13 @@ public class MobSettings
 	public boolean spawnMobsBehindPlayerHard;
 	public boolean enableStaffCreationPrimaryItem;
 	public String staffCreationPrimaryItem;
+	public int staffCreationPrimaryItemDamage;
 	public int staffCreationPrimaryItemAmount;
 	public int staffCreationPrimaryItemLevels;
 	public int staffCreationPrimaryItemUses;
 	public boolean enableStaffCreationSecondaryItem;
 	public String staffCreationSecondaryItem;
+	public int staffCreationSecondaryItemDamage;
 	public int staffCreationSecondaryItemAmount;
 	public int staffCreationSecondaryItemLevels;
 	public int staffCreationSecondaryItemUses;

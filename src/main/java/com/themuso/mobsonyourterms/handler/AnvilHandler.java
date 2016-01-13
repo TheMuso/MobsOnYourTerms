@@ -3,6 +3,7 @@ package com.themuso.mobsonyourterms.handler;
 import java.util.Iterator;
 
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.AnvilUpdateEvent;
 
 import com.themuso.mobsonyourterms.init.ModItems;
@@ -22,6 +23,7 @@ public class AnvilHandler
 	{
 		Iterator iterator;
 		String rightSlotItemName;
+		int rightSlotItemDamage;
 		String staffFragmentItemName;
 		MobSettings mobConfig;
 
@@ -34,6 +36,7 @@ public class AnvilHandler
 		}
 
 		rightSlotItemName = Item.itemRegistry.getNameForObject(event.right.getItem());
+		rightSlotItemDamage = event.right.getItemDamage();
 		staffFragmentItemName = Item.itemRegistry.getNameForObject(ModItems.staffFragment);
 		iterator = MobList.mobList.values().iterator();
 
@@ -41,7 +44,8 @@ public class AnvilHandler
 		{
 			mobConfig = (MobSettings)iterator.next();
 
-			if (mobConfig.enableStaffCreationPrimaryItem && (mobConfig.staffCreationPrimaryItem.equals(rightSlotItemName))
+			if (mobConfig.enableStaffCreationPrimaryItem && (mobConfig.staffCreationPrimaryItem.equals(rightSlotItemName)
+			 && mobConfig.staffCreationPrimaryItemDamage == rightSlotItemDamage)
 			 && event.right.stackSize >= mobConfig.staffCreationPrimaryItemAmount)
 			{
 				LogHelper.info("Primary item enabled for entity " + MobList.getKey(mobConfig));
@@ -52,7 +56,8 @@ public class AnvilHandler
 				event.materialCost = mobConfig.staffCreationPrimaryItemAmount;
 				return;
 			}
-			else if (mobConfig.enableStaffCreationSecondaryItem && (mobConfig.staffCreationSecondaryItem.equals(rightSlotItemName))
+			else if (mobConfig.enableStaffCreationSecondaryItem && (mobConfig.staffCreationSecondaryItem.equals(rightSlotItemName)
+			  && mobConfig.staffCreationSecondaryItemDamage == rightSlotItemDamage)
 			  && event.right.stackSize >= mobConfig.staffCreationSecondaryItemAmount)
 			{
 				LogHelper.info("Secondary item enabled for entity " + MobList.getKey(mobConfig));
