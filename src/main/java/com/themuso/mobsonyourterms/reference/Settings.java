@@ -42,6 +42,18 @@ public class Settings
 		public static int spawnRange;
 	}
 
+	public static class leveling
+	{
+		public static String mobSpawningStaffLevel2Item;
+		public static int mobSpawningStaffLevel2XP;
+		public static float mobSpawningStaffLevel2SpawnXPMultiply;
+		public static float mobSpawningStaffLevel2CooldownMultiply;
+		public static String mobSpawningStaffLevel3Item;
+		public static int mobSpawningStaffLevel3XP;
+		public static float mobSpawningStaffLevel3SpawnXPMultiply;
+		public static float mobSpawningStaffLevel3CooldownMultiply;
+	}
+
 	public static MobSettings extraMobDefaultConfig;
 
 	public static void setExtraMobDefaults()

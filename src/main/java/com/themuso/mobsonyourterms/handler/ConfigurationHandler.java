@@ -39,6 +39,7 @@ public class ConfigurationHandler
 	{
 		List<String> settingsPropOrder = new ArrayList<String>();
 		List<String> spawnerSettingsPropOrder = new ArrayList<String>();
+		List<String> levelingSettingsPropOrder = new ArrayList<String>();
 		MobSettings mobConfig, mobDefaultSet;
 
 		// General settings
@@ -78,6 +79,16 @@ public class ConfigurationHandler
 		Settings.Spawner.activatingRangeFromPlayer = configuration.getInt(addToPropOrder(spawnerSettingsPropOrder, "activatingRangeFromPlayer"), "Mob Spawner Settings", 6, 2, 32, "The distance in blocks a player needs to bbe from the spawner to activate it.");
 		Settings.Spawner.spawnRange = configuration.getInt(addToPropOrder(spawnerSettingsPropOrder, "spawnRange"), "Mob Spawner Settings", 4, 2, 32, "The range in blocks where mobs can be spawned.");
 		configuration.setCategoryPropertyOrder("Mob Spawner Settings", spawnerSettingsPropOrder);
+
+		// Staff leveling settings
+		Settings.leveling.mobSpawningStaffLevel2Item = configuration.getString(addToPropOrder(levelingSettingsPropOrder, "mobSpawningStaffLevel2Item"), "Staff Leveling Settings", "", "The item that can be used to level the staff up to level 2. Place this item together with a mob spawning staff on an anvil to level up the staff.");
+		Settings.leveling.mobSpawningStaffLevel2XP = configuration.getInt(addToPropOrder(levelingSettingsPropOrder, "mobSpawningStaffLevel2XP"), "Staff Leveling Settings", 10, 1, 100, "The amount of XP required to level a mob spawning staff to level 2.");
+		Settings.leveling.mobSpawningStaffLevel2SpawnXPMultiply = configuration.getFloat(addToPropOrder(levelingSettingsPropOrder, "mobSpawningStaffLevel2SpawnXPMultiply"), "Staff Leveling Settings", 1, 1, 2, "Set this to a value less than 1 to reduce the amount of XP required to spawn a mob with a level 2 staff. Set this to greater than 1 to increase the amount of XP required.");
+		Settings.leveling.mobSpawningStaffLevel2CooldownMultiply = configuration.getFloat(addToPropOrder(levelingSettingsPropOrder, "mobSpawningStaffLevel2CooldownMultiply"), "Staff Leveling Settings", 1, 1, 2, "Set this to a value less than 1 to reduce the cooldown of the staff after having spawned a mob. Set this to a value greater than 1 to increase the cooldown.");
+		Settings.leveling.mobSpawningStaffLevel3Item = configuration.getString(addToPropOrder(levelingSettingsPropOrder, "mobSpawningStaffLevel3Item"), "Staff Leveling Settings", "", "The item that can be used to level the staff up to level 2. Place this item together with a mob spawning staff on an anvil to level up the staff.");
+		Settings.leveling.mobSpawningStaffLevel3XP = configuration.getInt(addToPropOrder(levelingSettingsPropOrder, "mobSpawningStaffLevel3XP"), "Staff Leveling Settings", 10, 1, 100, "The amount of XP required to level a mob spawning staff to level 2.");
+		Settings.leveling.mobSpawningStaffLevel3SpawnXPMultiply = configuration.getFloat(addToPropOrder(levelingSettingsPropOrder, "mobSpawningStaffLevel3SpawnXPMultiply"), "Staff Leveling Settings", 1, 1, 2, "Set this to a value less than 1 to reduce the amount of XP required to spawn a mob with a level 2 staff. Set this to greater than 1 to increase the amount of XP required.");
+		Settings.leveling.mobSpawningStaffLevel3CooldownMultiply = configuration.getFloat(addToPropOrder(levelingSettingsPropOrder, "mobSpawningStaffLevel3CooldownMultiply"), "Staff Leveling Settings", 1, 1, 2, "Set this to a value less than 1 to reduce the cooldown of the staff after having spawned a mob. Set this to a value greater than 1 to increase the cooldown.");
 
 		// Load vanilla mob default settings
 		for (String mob : VanillaMobSettings.defaults.keySet())
