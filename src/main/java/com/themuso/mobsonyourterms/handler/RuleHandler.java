@@ -6,7 +6,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.world.WorldEvent;
 
 import com.themuso.mobsonyourterms.reference.Settings;
-import com.themuso.mobsonyourterms.utility.LogHelper;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
@@ -20,11 +19,11 @@ public class RuleHandler
 			event.setCanceled(true);
 
 			/* Exception for Extra Utilities cursed earth */
-			float x = event.x + 0.5F;
-			float y = event.y;
-			float z = event.z + 0.5F;
+			int x = event.x;
+			int y = event.y;
+			int z = event.z;
 
-			Block block = event.world.getBlock((int)x, (int)y, (int)z);
+			Block block = event.world.getBlock(x, y, z);
 			String blockName = block.getUnlocalizedName();
 
 			if (blockName.equals("tile.extrautils:cursedearthside"))
