@@ -1,5 +1,6 @@
 package com.themuso.mobsonyourterms.item;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -37,15 +38,17 @@ public class ItemMobSpawningStaff extends ItemMOYT
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack itemStack, EntityPlayer entityPlayer, List list, boolean flag)
 	{
+		List<String> infoList = new ArrayList<String>();
 		if (!ItemNBTHelper.getString(itemStack, Names.NBTTags.STAFF_MOB_TO_SPAWN).isEmpty())
 		{
-			list.add("Mob to spawn: " + ItemNBTHelper.getString(itemStack, Names.NBTTags.STAFF_MOB_TO_SPAWN));
+			infoList.add("Mob to spawn: " + ItemNBTHelper.getString(itemStack, Names.NBTTags.STAFF_MOB_TO_SPAWN));
 		}
 
 		if (ItemHelper.hasOwner(itemStack))
 		{
-			list.add("Owner: " + ItemHelper.getOwnerName(itemStack));
+			infoList.add("Owner: " + ItemHelper.getOwnerName(itemStack));
 		}
+		list = infoList;
 	}
 
 	@Override

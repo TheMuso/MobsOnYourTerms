@@ -1,5 +1,6 @@
 package com.themuso.mobsonyourterms.item;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -22,9 +23,11 @@ public class ItemStaffFragment extends ItemMOYT
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack itemStack, EntityPlayer entityPlayer, List list, boolean flag)
 	{
+		List<String> infoList = new ArrayList<String>();
 		if (!ItemNBTHelper.getString(itemStack, Names.NBTTags.FRAGMENT_IS_FOR_MOB).isEmpty())
 		{
-			list.add("Mob to spawn: " + ItemNBTHelper.getString(itemStack, Names.NBTTags.FRAGMENT_IS_FOR_MOB));
+			infoList.add("Mob to spawn: " + ItemNBTHelper.getString(itemStack, Names.NBTTags.FRAGMENT_IS_FOR_MOB));
+			list = infoList;
 		}
 	}
 }
