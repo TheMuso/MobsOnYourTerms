@@ -8,6 +8,7 @@ import java.util.List;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.item.Item;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.config.Configuration;
 
 import com.themuso.mobsonyourterms.reference.MobList;
@@ -112,11 +113,11 @@ public class ConfigurationHandler
 
 		Settings.setExtraMobDefaults();
 
-		for (Object mob : EntityList.stringToClassMapping.keySet())
+		for (String mob : EntityList.NAME_TO_CLASS.keySet())
 		{
 			if (!MobList.mobList.containsKey((String)mob))
 			{
-				mobClass = (Class)EntityList.stringToClassMapping.get(mob);
+				mobClass = (Class)EntityList.NAME_TO_CLASS.get(mob);
 
 				if (entityImplementsIMob(mobClass))
 				{
@@ -148,7 +149,7 @@ public class ConfigurationHandler
 			while (iterator.hasNext())
 			{
 				config = (MobSettings)iterator.next();
-				if (Item.itemRegistry.getObject(config.staffCreationPrimaryItem) == null)
+				if (Item.REGISTRY.getObject(new ResourceLocation(config.staffCreationPrimaryItem)) == null)
 				{
 					key = MobList.getKey(config);
 					LogHelper.warn("Invalid item ID " + config.staffCreationPrimaryItem + "for staffCreationPrimaryItem for entity " + key + ", Disabling");
@@ -156,7 +157,7 @@ public class ConfigurationHandler
 					config.enableStaffCreationPrimaryItem = false;
 				}
 
-				if (Item.itemRegistry.getObject(config.staffCreationSecondaryItem) == null)
+				if (Item.REGISTRY.getObject(new ResourceLocation(config.staffCreationSecondaryItem)) == null)
 				{
 					key = MobList.getKey(config);
 					LogHelper.warn("Invalid item ID " + config.staffCreationSecondaryItem + "for staffCreationSecondaryItem for entity " + key + ", disabling");
@@ -203,7 +204,7 @@ public class ConfigurationHandler
 
 					/* We special case the Wither Skeleton config as no separate entity exists for it */
 					if (!config.staffSpawnedMobDropsFragmentForEntity.equals("WitherSkeleton")
-					  && (EntityList.stringToClassMapping.get(config.staffSpawnedMobDropsFragmentForEntity) == null))
+					  && (EntityList.NAME_TO_CLASS.get(config.staffSpawnedMobDropsFragmentForEntity) == null))
 					{
 						LogHelper.warn("No such entity named " + config.staffSpawnedMobDropsFragmentForEntity + ". Disabling the dropping of staff fragments by mob " + key + ".");
 						config.mobDropsStaffFragment = false;

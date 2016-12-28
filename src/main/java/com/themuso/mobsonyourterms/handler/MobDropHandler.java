@@ -5,9 +5,11 @@ import net.minecraft.entity.EntityList;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.monster.EntitySkeleton;
+import net.minecraft.entity.monster.SkeletonType;
 import net.minecraft.entity.player.EntityPlayer;
+// import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 
@@ -19,7 +21,7 @@ import com.themuso.mobsonyourterms.reference.Settings;
 import com.themuso.mobsonyourterms.utility.EntityNBTHelper;
 import com.themuso.mobsonyourterms.utility.ItemNBTHelper;
 
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class MobDropHandler
 {
@@ -32,9 +34,10 @@ public class MobDropHandler
 		int maxDrops = 0;
 		int dropsRange = 0;
 		int numDrops = 0;
-		EnumDifficulty difficulty = event.entityLiving.worldObj.difficultySetting;
+		EnumDifficulty difficulty = event.getEntityLiving().worldObj.getDifficulty();
 		Entity mob;
 		EntityPlayer player;
+		// EntityPlayerMP playerMP;
 		MobSettings mobConfig;
 		ItemStack fragment;
 		EntityItem drop;
@@ -44,13 +47,14 @@ public class MobDropHandler
 			return;
 		}
 
-		if (!(event.source.getEntity() instanceof EntityPlayer))
+		if (!(event.getSource().getEntity() instanceof EntityPlayer))
 		{
 			return;
 		}
 
-		mob = event.entityLiving;
-		player = (EntityPlayer)event.source.getEntity();
+		mob = event.getEntityLiving();
+		player = (EntityPlayer)event.getSource().getEntity();
+		// playerMP = (EntityPlayerMP)event.getSource().getEntity();
 
 		if (!EntityNBTHelper.getBoolean(mob, Names.NBTTags.MOB_SPAWNED_WITH_STAFF))
 		{
@@ -58,7 +62,7 @@ public class MobDropHandler
 		}
 
 		if ((mob instanceof EntitySkeleton) &&
-		    (((EntitySkeleton)mob).getSkeletonType() == 1))
+		    (((EntitySkeleton)mob).getSkeletonType() == SkeletonType.WITHER))
 		{
 			mobName = "WitherSkeleton";
 		}
@@ -71,7 +75,7 @@ public class MobDropHandler
 
 		if (mobConfig == null)
 		{
-			player.addChatComponentMessage(new ChatComponentText("Cannot retrieve the config for this staff spawned mob."));
+			player.addChatMessage(new TextComponentString("Cannot retrieve the config for this staff spawned mob."));
 			return;
 		}
 
@@ -80,13 +84,13 @@ public class MobDropHandler
 			return;
 		}
 
-		if (event.lootingLevel == 0)
+		if (event.getLootingLevel() == 0)
 		{
 			lootLevel = 1;
 		}
 		else
 		{
-			lootLevel = event.lootingLevel;
+			lootLevel = event.getLootingLevel();
 		}
 
 		if (difficulty == EnumDifficulty.EASY)
@@ -115,6 +119,6 @@ public class MobDropHandler
 		fragment = new ItemStack(ModItems.staffFragment, numDrops);
 		ItemNBTHelper.setString(fragment, Names.NBTTags.FRAGMENT_IS_FOR_MOB, mobConfig.staffSpawnedMobDropsFragmentForEntity);
 		drop = new EntityItem(mob.worldObj, mob.posX, mob.posY, mob.posZ, fragment);
-		event.drops.add(drop);
+		event.getDrops().add(drop);
 	}
 }

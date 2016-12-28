@@ -36,7 +36,7 @@ public class ItemHelper
 
 	public static void setOwner(ItemStack itemStack, EntityPlayer entityPlayer)
 	{
-		ItemNBTHelper.setString(itemStack, Names.NBTTags.OWNER, entityPlayer.getDisplayName());
+		ItemNBTHelper.setString(itemStack, Names.NBTTags.OWNER, entityPlayer.getName());
 		ItemNBTHelper.setLong(itemStack, Names.NBTTags.OWNER_UUID_MOST_SIG, entityPlayer.getUniqueID().getMostSignificantBits());
 		ItemNBTHelper.setLong(itemStack, Names.NBTTags.OWNER_UUID_LEAST_SIG, entityPlayer.getUniqueID().getLeastSignificantBits());
 	}

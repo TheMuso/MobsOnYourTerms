@@ -13,7 +13,7 @@ import net.minecraftforge.event.world.ChunkWatchEvent;
 
 import com.themuso.mobsonyourterms.reference.Settings;
 
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class ChunkWatchEventHandler
 {
@@ -26,12 +26,12 @@ public class ChunkWatchEventHandler
 		MobSpawnerBaseLogic spawnerLogic;
 		TileEntityMobSpawner spawner;
 
-		if (!event.player.worldObj.isRemote)
+		if (!event.getPlayer().worldObj.isRemote)
 		{
 			if (Settings.Spawner.changeMobSpawnerBehavior)
 			{
-				chunk = event.player.worldObj.getChunkFromChunkCoords(event.chunk.chunkXPos, event.chunk.chunkZPos);
-				iterator = chunk.chunkTileEntityMap.values().iterator();
+				chunk = event.getPlayer().worldObj.getChunkFromChunkCoords(event.getChunk().chunkXPos, event.getChunk().chunkZPos);
+				iterator = chunk.getTileEntityMap().values().iterator();
 
 				while (iterator.hasNext())
 				{

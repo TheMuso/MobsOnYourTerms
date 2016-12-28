@@ -6,7 +6,7 @@ import com.themuso.mobsonyourterms.item.ItemStaffFragment;
 import com.themuso.mobsonyourterms.reference.Names;
 import com.themuso.mobsonyourterms.reference.Reference;
 
-import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 @GameRegistry.ObjectHolder(Reference.MOD_ID)
 public class ModItems
@@ -16,7 +16,7 @@ public class ModItems
 
 	public static void init()
 	{
-		GameRegistry.registerItem(mobSpawningStaff, Names.Items.MOB_SPAWNING_STAFF);
-		GameRegistry.registerItem(staffFragment, Names.Items.STAFF_FRAGMENT);
+		GameRegistry.register(mobSpawningStaff);
+		GameRegistry.register(staffFragment);
 	}
 }
