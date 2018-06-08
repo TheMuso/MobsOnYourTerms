@@ -5,17 +5,18 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityList;
-import net.minecraft.item.Item;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.common.config.Configuration;
-
 import com.themuso.mobsonyourterms.reference.MobList;
 import com.themuso.mobsonyourterms.reference.MobSettings;
 import com.themuso.mobsonyourterms.reference.Settings;
 import com.themuso.mobsonyourterms.reference.VanillaMobSettings;
 import com.themuso.mobsonyourterms.utility.LogHelper;
+
+import net.minecraft.entity.Entity;
+import net.minecraft.item.Item;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.fml.common.registry.EntityEntry;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 public class ConfigurationHandler
 {
@@ -108,18 +109,19 @@ public class ConfigurationHandler
 
 	public static void loadExtraMobConfig()
 	{
-		Class mobClass;
+		Class<? extends Entity> mobClass;
 		MobSettings mobConfig;
 
 		Settings.setExtraMobDefaults();
 
-		for (String mob : EntityList.NAME_TO_CLASS.keySet())
+		for (EntityEntry entry : ForgeRegistries.ENTITIES)
 		{
+			String mob = entry.getName();
 			if (!MobList.mobList.containsKey((String)mob))
 			{
-				mobClass = (Class)EntityList.NAME_TO_CLASS.get(mob);
+				mobClass = entry.getEntityClass();
 
-				if (entityImplementsIMob(mobClass))
+				if (entityImplementsIMob((Class)mobClass))
 				{
 					mobConfig = populateConfig((String)mob, Settings.extraMobDefaultConfig);
 					MobList.mobList.put((String)mob, mobConfig);
@@ -200,15 +202,6 @@ public class ConfigurationHandler
 						{
 							LogHelper.warn("The staff fragments that will be dropped by " + key + " and " + subKey + " are for the same mob.");
 						}
-					}
-
-					/* We special case the Wither Skeleton config as no separate entity exists for it */
-					if (!config.staffSpawnedMobDropsFragmentForEntity.equals("WitherSkeleton")
-					  && (EntityList.NAME_TO_CLASS.get(config.staffSpawnedMobDropsFragmentForEntity) == null))
-					{
-						LogHelper.warn("No such entity named " + config.staffSpawnedMobDropsFragmentForEntity + ". Disabling the dropping of staff fragments by mob " + key + ".");
-						config.mobDropsStaffFragment = false;
-						config.staffSpawnedMobDropsFragmentForEntity = "";
 					}
 				}
 			}

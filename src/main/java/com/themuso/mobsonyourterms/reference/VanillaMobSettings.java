@@ -43,7 +43,7 @@ public class VanillaMobSettings
 		mobSet.staffCreationSecondaryItemLevels = 3;
 		mobSet.staffCreationSecondaryItemUses = 0;
 		mobSet.mobDropsStaffFragment = true;
-		mobSet.staffSpawnedMobDropsFragmentForEntity = "Creeper";
+		mobSet.staffSpawnedMobDropsFragmentForEntity = "minecraft:creeper";
 		mobSet.minDroppedStaffFragmentsEasy = 2;
 		mobSet.maxDroppedStaffFragmentsEasy = 4;
 		mobSet.minDroppedStaffFragmentsNormal = 1;
@@ -59,7 +59,7 @@ public class VanillaMobSettings
 		mobSet.mobOnlySpawnableAtNightEasy = false;
 		mobSet.mobOnlySpawnableAtNightNormal = true;
 		mobSet.mobOnlySpawnableAtNightHard = true;
-		defaults.put("Zombie", mobSet);
+		defaults.put("minecraft:zombie", mobSet);
 
 		// Creeper
 		mobSet = new MobSettings();
@@ -92,7 +92,7 @@ public class VanillaMobSettings
 		mobSet.staffCreationSecondaryItemLevels = 1;
 		mobSet.staffCreationSecondaryItemUses = 0;
 		mobSet.mobDropsStaffFragment = true;
-		mobSet.staffSpawnedMobDropsFragmentForEntity = "Spider";
+		mobSet.staffSpawnedMobDropsFragmentForEntity = "minecraft:spider";
 		mobSet.minDroppedStaffFragmentsEasy = 1;
 		mobSet.maxDroppedStaffFragmentsEasy = 3;
 		mobSet.minDroppedStaffFragmentsNormal = 1;
@@ -108,7 +108,7 @@ public class VanillaMobSettings
 		mobSet.mobOnlySpawnableAtNightEasy = false;
 		mobSet.mobOnlySpawnableAtNightNormal = false;
 		mobSet.mobOnlySpawnableAtNightHard = true;
-		defaults.put("Creeper", mobSet);
+		defaults.put("minecraft:creeper", mobSet);
 
 		// Spider
 		mobSet = new MobSettings();
@@ -141,7 +141,7 @@ public class VanillaMobSettings
 		mobSet.staffCreationSecondaryItemLevels = 1;
 		mobSet.staffCreationSecondaryItemUses = 0;
 		mobSet.mobDropsStaffFragment = true;
-		mobSet.staffSpawnedMobDropsFragmentForEntity = "Slime";
+		mobSet.staffSpawnedMobDropsFragmentForEntity = "minecraft:slime";
 		mobSet.minDroppedStaffFragmentsEasy = 1;
 		mobSet.maxDroppedStaffFragmentsEasy = 3;
 		mobSet.minDroppedStaffFragmentsNormal = 1;
@@ -157,7 +157,7 @@ public class VanillaMobSettings
 		mobSet.mobOnlySpawnableAtNightEasy = true;
 		mobSet.mobOnlySpawnableAtNightNormal = true;
 		mobSet.mobOnlySpawnableAtNightHard = true;
-		defaults.put("Spider", mobSet);
+		defaults.put("minecraft:spider", mobSet);
 
 		// Slime
 		mobSet = new MobSettings();
@@ -190,7 +190,7 @@ public class VanillaMobSettings
 		mobSet.staffCreationSecondaryItemLevels = 1;
 		mobSet.staffCreationSecondaryItemUses = 0;
 		mobSet.mobDropsStaffFragment = true;
-		mobSet.staffSpawnedMobDropsFragmentForEntity = "Silverfish";
+		mobSet.staffSpawnedMobDropsFragmentForEntity = "minecraft:silverfish";
 		mobSet.minDroppedStaffFragmentsEasy = 1;
 		mobSet.maxDroppedStaffFragmentsEasy = 3;
 		mobSet.minDroppedStaffFragmentsNormal = 1;
@@ -206,7 +206,7 @@ public class VanillaMobSettings
 		mobSet.mobOnlySpawnableAtNightEasy = false;
 		mobSet.mobOnlySpawnableAtNightNormal = true;
 		mobSet.mobOnlySpawnableAtNightHard = true;
-		defaults.put("Slime", mobSet);
+		defaults.put("minecraft:slime", mobSet);
 
 		// Silverfish
 		mobSet = new MobSettings();
@@ -239,7 +239,7 @@ public class VanillaMobSettings
 		mobSet.staffCreationSecondaryItemLevels = 1;
 		mobSet.staffCreationSecondaryItemUses = 0;
 		mobSet.mobDropsStaffFragment = true;
-		mobSet.staffSpawnedMobDropsFragmentForEntity = "Skeleton";
+		mobSet.staffSpawnedMobDropsFragmentForEntity = "minecraft:skeleton";
 		mobSet.minDroppedStaffFragmentsEasy = 1;
 		mobSet.maxDroppedStaffFragmentsEasy = 2;
 		mobSet.minDroppedStaffFragmentsNormal = 1;
@@ -255,7 +255,7 @@ public class VanillaMobSettings
 		mobSet.mobOnlySpawnableAtNightEasy = false;
 		mobSet.mobOnlySpawnableAtNightNormal = true;
 		mobSet.mobOnlySpawnableAtNightHard = true;
-		defaults.put("Silverfish", mobSet);
+		defaults.put("minecraft:silverfish", mobSet);
 
 		// Skeleton
 		mobSet = new MobSettings();
@@ -288,7 +288,7 @@ public class VanillaMobSettings
 		mobSet.staffCreationSecondaryItemLevels = 1;
 		mobSet.staffCreationSecondaryItemUses = 0;
 		mobSet.mobDropsStaffFragment = true;
-		mobSet.staffSpawnedMobDropsFragmentForEntity = "Witch";
+		mobSet.staffSpawnedMobDropsFragmentForEntity = "minecraft:witch";
 		mobSet.minDroppedStaffFragmentsEasy = 1;
 		mobSet.maxDroppedStaffFragmentsEasy = 2;
 		mobSet.minDroppedStaffFragmentsNormal = 1;
@@ -304,7 +304,7 @@ public class VanillaMobSettings
 		mobSet.mobOnlySpawnableAtNightEasy = true;
 		mobSet.mobOnlySpawnableAtNightNormal = true;
 		mobSet.mobOnlySpawnableAtNightHard = true;
-		defaults.put("Skeleton", mobSet);
+		defaults.put("minecraft:skeleton", mobSet);
 
 		// Witch
 		mobSet = new MobSettings();
@@ -337,7 +337,7 @@ public class VanillaMobSettings
 		mobSet.staffCreationSecondaryItemLevels = 1;
 		mobSet.staffCreationSecondaryItemUses = 0;
 		mobSet.mobDropsStaffFragment = true;
-		mobSet.staffSpawnedMobDropsFragmentForEntity = "PigZombie";
+		mobSet.staffSpawnedMobDropsFragmentForEntity = "minecraft:zombie_pigman";
 		mobSet.minDroppedStaffFragmentsEasy = 1;
 		mobSet.maxDroppedStaffFragmentsEasy = 3;
 		mobSet.minDroppedStaffFragmentsNormal = 1;
@@ -353,9 +353,9 @@ public class VanillaMobSettings
 		mobSet.mobOnlySpawnableAtNightEasy = false;
 		mobSet.mobOnlySpawnableAtNightNormal = true;
 		mobSet.mobOnlySpawnableAtNightHard = true;
-		defaults.put("Witch", mobSet);
+		defaults.put("minecraft:witch", mobSet);
 
-		// PigZombie
+		// Zombie Pigman
 		mobSet = new MobSettings();
 		mobSet.spawnXPLevelEasy = 10;
 		mobSet.spawnXPLevelNormal = 13;
@@ -386,7 +386,7 @@ public class VanillaMobSettings
 		mobSet.staffCreationSecondaryItemLevels = 3;
 		mobSet.staffCreationSecondaryItemUses = 0;
 		mobSet.mobDropsStaffFragment = true;
-		mobSet.staffSpawnedMobDropsFragmentForEntity = "Ghast";
+		mobSet.staffSpawnedMobDropsFragmentForEntity = "minecraft:ghast";
 		mobSet.minDroppedStaffFragmentsEasy = 1;
 		mobSet.maxDroppedStaffFragmentsEasy = 3;
 		mobSet.minDroppedStaffFragmentsNormal = 1;
@@ -402,7 +402,7 @@ public class VanillaMobSettings
 		mobSet.mobOnlySpawnableAtNightEasy = false;
 		mobSet.mobOnlySpawnableAtNightNormal = true;
 		mobSet.mobOnlySpawnableAtNightHard = true;
-		defaults.put("PigZombie", mobSet);
+		defaults.put("minecraft:zombie_pigman", mobSet);
 
 		// Ghast
 		mobSet = new MobSettings();
@@ -435,7 +435,7 @@ public class VanillaMobSettings
 		mobSet.staffCreationSecondaryItemLevels = 1;
 		mobSet.staffCreationSecondaryItemUses = 0;
 		mobSet.mobDropsStaffFragment = true;
-		mobSet.staffSpawnedMobDropsFragmentForEntity = "LavaSlime";
+		mobSet.staffSpawnedMobDropsFragmentForEntity = "minecraft:magma_cube";
 		mobSet.minDroppedStaffFragmentsEasy = 1;
 		mobSet.maxDroppedStaffFragmentsEasy = 3;
 		mobSet.minDroppedStaffFragmentsNormal = 1;
@@ -451,9 +451,9 @@ public class VanillaMobSettings
 		mobSet.mobOnlySpawnableAtNightEasy = false;
 		mobSet.mobOnlySpawnableAtNightNormal = true;
 		mobSet.mobOnlySpawnableAtNightHard = true;
-		defaults.put("Ghast", mobSet);
+		defaults.put("minecraft:ghast", mobSet);
 
-		// LavaSlime
+		// Magma Cube
 		mobSet = new MobSettings();
 		mobSet.spawnXPLevelEasy = 15;
 		mobSet.spawnXPLevelNormal = 17;
@@ -484,7 +484,7 @@ public class VanillaMobSettings
 		mobSet.staffCreationSecondaryItemLevels = 1;
 		mobSet.staffCreationSecondaryItemUses = 0;
 		mobSet.mobDropsStaffFragment = true;
-		mobSet.staffSpawnedMobDropsFragmentForEntity = "WitherSkeleton";
+		mobSet.staffSpawnedMobDropsFragmentForEntity = "minecraft:wither_skeleton";
 		mobSet.minDroppedStaffFragmentsEasy = 1;
 		mobSet.maxDroppedStaffFragmentsEasy = 3;
 		mobSet.minDroppedStaffFragmentsNormal = 1;
@@ -500,7 +500,7 @@ public class VanillaMobSettings
 		mobSet.mobOnlySpawnableAtNightEasy = true;
 		mobSet.mobOnlySpawnableAtNightNormal = true;
 		mobSet.mobOnlySpawnableAtNightHard = true;
-		defaults.put("LavaSlime", mobSet);	
+		defaults.put("minecraft:magma_cube", mobSet);
 
 		// Wither Skeleton
 		mobSet = new MobSettings();
@@ -533,7 +533,7 @@ public class VanillaMobSettings
 		mobSet.staffCreationSecondaryItemLevels = 1;
 		mobSet.staffCreationSecondaryItemUses = 0;
 		mobSet.mobDropsStaffFragment = true;
-		mobSet.staffSpawnedMobDropsFragmentForEntity = "Enderman";
+		mobSet.staffSpawnedMobDropsFragmentForEntity = "minecraft:enderman";
 		mobSet.minDroppedStaffFragmentsEasy = 1;
 		mobSet.maxDroppedStaffFragmentsEasy = 2;
 		mobSet.minDroppedStaffFragmentsNormal = 1;
@@ -549,7 +549,7 @@ public class VanillaMobSettings
 		mobSet.mobOnlySpawnableAtNightEasy = true;
 		mobSet.mobOnlySpawnableAtNightNormal = true;
 		mobSet.mobOnlySpawnableAtNightHard = true;
-		defaults.put("WitherSkeleton", mobSet);	
+		defaults.put("minecraft:wither_skeleton", mobSet);
 
 		// Enderman
 		mobSet = new MobSettings();
@@ -598,6 +598,6 @@ public class VanillaMobSettings
 		mobSet.mobOnlySpawnableAtNightEasy = true;
 		mobSet.mobOnlySpawnableAtNightNormal = true;
 		mobSet.mobOnlySpawnableAtNightHard = true;
-		defaults.put("Enderman", mobSet);
+		defaults.put("minecraft:enderman", mobSet);
 	}
 }

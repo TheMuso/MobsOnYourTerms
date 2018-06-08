@@ -23,3 +23,5 @@
 /*.ipr
 /*.iws
 /atlassian-ide-plugin.xml
+MobsOnYourTerms_Client.launch
+MobsOnYourTerms_Server.launch

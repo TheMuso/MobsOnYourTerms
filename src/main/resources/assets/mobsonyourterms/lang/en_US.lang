@@ -2,5 +2,5 @@
 itemGroup.mobsonyourterms=Mobs On Your Terms
 
 # Items
-item.mobsonyourterms:mobSpawningStaff.name=Mob Spawning Staff
-item.mobsonyourterms:staffFragment.name=Staff Fragment
+item.mobsonyourterms.mobspawningstaff.name=Mob Spawning Staff
+item.mobsonyourterms.stafffragment.name=Staff Fragment

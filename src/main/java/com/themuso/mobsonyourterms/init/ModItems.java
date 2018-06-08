@@ -8,15 +8,14 @@ import com.themuso.mobsonyourterms.reference.Reference;
 
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-@GameRegistry.ObjectHolder(Reference.MOD_ID)
-public class ModItems
+public final class ModItems
 {
-	public static final ItemMOYT mobSpawningStaff = new ItemMobSpawningStaff();
-	public static final ItemMOYT staffFragment = new ItemStaffFragment();
+	public static ItemMobSpawningStaff mobSpawningStaff;
+	public static ItemStaffFragment staffFragment;
 
 	public static void init()
 	{
-		GameRegistry.register(mobSpawningStaff);
-		GameRegistry.register(staffFragment);
+		mobSpawningStaff = new ItemMobSpawningStaff();
+		staffFragment = new ItemStaffFragment();
 	}
 }

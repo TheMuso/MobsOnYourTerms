@@ -1,25 +1,22 @@
 package com.themuso.mobsonyourterms;
 
-import net.minecraftforge.common.MinecraftForge;
-
 import com.themuso.mobsonyourterms.handler.AnvilHandler;
 import com.themuso.mobsonyourterms.handler.ChunkWatchEventHandler;
 import com.themuso.mobsonyourterms.handler.ConfigurationHandler;
+import com.themuso.mobsonyourterms.handler.ItemRegistrationHandler;
 import com.themuso.mobsonyourterms.handler.MobDropHandler;
 import com.themuso.mobsonyourterms.handler.RuleHandler;
 import com.themuso.mobsonyourterms.init.ModItems;
-import com.themuso.mobsonyourterms.init.Recipes;
 import com.themuso.mobsonyourterms.reference.Reference;
-import com.themuso.mobsonyourterms.reference.Settings;
 import com.themuso.mobsonyourterms.reference.VanillaMobSettings;
 import com.themuso.mobsonyourterms.utility.LogHelper;
 
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION)
 public class MobsOnYourTerms 
@@ -33,29 +30,25 @@ public class MobsOnYourTerms
 		VanillaMobSettings.initDefaults();
 		ConfigurationHandler.init(event.getSuggestedConfigurationFile());
 
-		ChunkWatchEventHandler chunkEventHandler = new ChunkWatchEventHandler();
-		RuleHandler ruleEventHandler = new RuleHandler();
-		AnvilHandler anvilHandler = new AnvilHandler();
-		MobDropHandler mobDropHandler = new MobDropHandler();
-
-		MinecraftForge.EVENT_BUS.register(chunkEventHandler);
-		MinecraftForge.EVENT_BUS.register(ruleEventHandler);
-		MinecraftForge.EVENT_BUS.register(anvilHandler);
-		MinecraftForge.EVENT_BUS.register(mobDropHandler);
-
 		ModItems.init();
+
+		MinecraftForge.EVENT_BUS.register(new ItemRegistrationHandler());
+		MinecraftForge.EVENT_BUS.register(new ChunkWatchEventHandler());
+		MinecraftForge.EVENT_BUS.register(new RuleHandler());
+		MinecraftForge.EVENT_BUS.register(new AnvilHandler());
+		MinecraftForge.EVENT_BUS.register(new MobDropHandler());
 
 		LogHelper.info("Pre Init complete");
 	}
-	
+
 	@Mod.EventHandler
 	public void Init(FMLInitializationEvent event)
 	{
 		ConfigurationHandler.loadExtraMobConfig();
-		Recipes.init();
+
 		LogHelper.info("Init complete");
 	}
-	
+
 	@Mod.EventHandler
 	public void postInit(FMLPostInitializationEvent event)
 	{

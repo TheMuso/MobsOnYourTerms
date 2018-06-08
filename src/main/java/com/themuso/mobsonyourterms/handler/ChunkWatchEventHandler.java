@@ -26,12 +26,11 @@ public class ChunkWatchEventHandler
 		MobSpawnerBaseLogic spawnerLogic;
 		TileEntityMobSpawner spawner;
 
-		if (!event.getPlayer().worldObj.isRemote)
+		if (!event.getPlayer().world.isRemote)
 		{
 			if (Settings.Spawner.changeMobSpawnerBehavior)
 			{
-				chunk = event.getPlayer().worldObj.getChunkFromChunkCoords(event.getChunk().chunkXPos, event.getChunk().chunkZPos);
-				iterator = chunk.getTileEntityMap().values().iterator();
+				iterator = event.getChunkInstance().getTileEntityMap().values().iterator();
 
 				while (iterator.hasNext())
 				{

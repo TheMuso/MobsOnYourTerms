@@ -4,20 +4,6 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityList;
-import net.minecraft.entity.monster.EntitySkeleton;
-import net.minecraft.entity.monster.SkeletonType;
-import net.minecraft.entity.monster.IMob;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.text.TextComponentString;
-import net.minecraft.world.EnumDifficulty;
-import net.minecraft.world.World;
-
 import com.themuso.mobsonyourterms.reference.MobList;
 import com.themuso.mobsonyourterms.reference.MobSettings;
 import com.themuso.mobsonyourterms.reference.Names;
@@ -26,6 +12,19 @@ import com.themuso.mobsonyourterms.utility.EntityNBTHelper;
 import com.themuso.mobsonyourterms.utility.ItemHelper;
 import com.themuso.mobsonyourterms.utility.ItemNBTHelper;
 
+import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityList;
+import net.minecraft.entity.monster.IMob;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraft.world.EnumDifficulty;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -38,8 +37,11 @@ public class ItemMobSpawningStaff extends ItemMOYT
 	}
 
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack itemStack, EntityPlayer entityPlayer, List<String> list, boolean flag)
+	@Override
+	public void addInformation(ItemStack itemStack, World player, List<String> list, ITooltipFlag whatIsThis)
 	{
+		super.addInformation(itemStack, player, list, whatIsThis);
+
 		if (!ItemNBTHelper.getString(itemStack, Names.NBTTags.STAFF_MOB_TO_SPAWN).isEmpty())
 		{
 			list.add("Mob to spawn: " + ItemNBTHelper.getString(itemStack, Names.NBTTags.STAFF_MOB_TO_SPAWN));
@@ -52,8 +54,9 @@ public class ItemMobSpawningStaff extends ItemMOYT
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStack, World world, EntityPlayer entityPlayer, EnumHand hand)
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer entityPlayer, EnumHand hand)
 	{
+		ItemStack itemStack = entityPlayer.getHeldItem(hand);
 		Iterator iterator;
 		String mobToSpawn;
 		int minMobsToSpawn = 0;
@@ -87,7 +90,7 @@ public class ItemMobSpawningStaff extends ItemMOYT
 
 			if (difficulty == EnumDifficulty.PEACEFUL)
 			{
-				entityPlayer.addChatMessage(new TextComponentString("This item is useless in peaceful mode."));
+				entityPlayer.sendMessage(new TextComponentString("This item is useless in peaceful mode."));
 				return new ActionResult<>(EnumActionResult.PASS, itemStack);
 			}
 
@@ -105,7 +108,7 @@ public class ItemMobSpawningStaff extends ItemMOYT
 
 			if (ItemNBTHelper.getString(itemStack, Names.NBTTags.STAFF_MOB_TO_SPAWN).isEmpty())
 			{
-				entityPlayer.addChatMessage(new TextComponentString("This staff cannot spawn a mob. You need to imbue the staff with a staff fragment or another item using an anvil."));
+				entityPlayer.sendMessage(new TextComponentString("This staff cannot spawn a mob. You need to imbue the staff with a staff fragment or another item using an anvil."));
 				return new ActionResult<>(EnumActionResult.PASS, itemStack);
 			}
 
@@ -203,7 +206,7 @@ public class ItemMobSpawningStaff extends ItemMOYT
 
 			if (!validMobConfigFound)
 			{
-				entityPlayer.addChatMessage(new TextComponentString("Unknown mob to be spawned: " + mobToSpawn));
+				entityPlayer.sendMessage(new TextComponentString("Unknown mob to be spawned: " + mobToSpawn));
 				return new ActionResult<>(EnumActionResult.PASS, itemStack);
 			}
 
@@ -216,7 +219,7 @@ public class ItemMobSpawningStaff extends ItemMOYT
 
 					if (currentTime < coolDownTime)
 					{
-						entityPlayer.addChatMessage(new TextComponentString("Slow down, you need to let the staff cooldown expire."));
+						entityPlayer.sendMessage(new TextComponentString("Slow down, you need to let the staff cooldown expire."));
 						return new ActionResult<>(EnumActionResult.PASS, itemStack);
 					}
 					ItemNBTHelper.setLong(itemStack, Names.NBTTags.STAFF_SPAWN_TIMESTAMP, currentTime);
@@ -229,7 +232,7 @@ public class ItemMobSpawningStaff extends ItemMOYT
 
 			if (mobOnlySpawnableAtNight && world.isDaytime())
 			{
-				entityPlayer.addChatMessage(new TextComponentString("This mob can only be spawned at night."));
+				entityPlayer.sendMessage(new TextComponentString("This mob can only be spawned at night."));
 				return new ActionResult<>(EnumActionResult.PASS, itemStack);
 			}
 
@@ -237,7 +240,7 @@ public class ItemMobSpawningStaff extends ItemMOYT
 			{
 				if (entityPlayer.experienceLevel < spawnXPLevel)
 				{
-					entityPlayer.addChatMessage(new TextComponentString("You do not have enough XP to spawn this mob. You need at least " + spawnXPLevel + " levels."));
+					entityPlayer.sendMessage(new TextComponentString("You do not have enough XP to spawn this mob. You need at least " + spawnXPLevel + " levels."));
 					return new ActionResult<>(EnumActionResult.PASS, itemStack);
 				}
 
@@ -258,20 +261,11 @@ public class ItemMobSpawningStaff extends ItemMOYT
 
 			while (mobSpawnCount < mobsToBeSpawned)
 			{
-				/* Special case various entities that require custom variable settings */
-				if (mobToSpawn.equals("WitherSkeleton"))
-				{
-					mob = EntityList.createEntityByIDFromName("Skeleton", world);
-					((EntitySkeleton)mob).setSkeletonType(SkeletonType.WITHER);
-				}
-				else
-				{
-					mob = EntityList.createEntityByIDFromName(mobToSpawn, world);
-				}
+				mob = EntityList.createEntityByIDFromName(new ResourceLocation(mobToSpawn), world);
 
 				if (!(mob instanceof IMob))
 				{
-					entityPlayer.addChatMessage(new TextComponentString("This mob is not hostile."));
+					entityPlayer.sendMessage(new TextComponentString("This mob is not hostile."));
 					return new ActionResult<>(EnumActionResult.PASS, itemStack);
 				}
 
@@ -367,7 +361,7 @@ public class ItemMobSpawningStaff extends ItemMOYT
 
 				mob.setLocationAndAngles(posX, posY, posZ, world.rand.nextFloat() * 360.0F, 0.0F);
 				EntityNBTHelper.setBoolean(mob, Names.NBTTags.MOB_SPAWNED_WITH_STAFF, true);
-				world.spawnEntityInWorld(mob);
+				world.spawnEntity(mob);
 
 				mobSpawnCount++;
 			}

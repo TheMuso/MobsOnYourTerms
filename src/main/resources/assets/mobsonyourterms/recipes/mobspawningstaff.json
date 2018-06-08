@@ -1,0 +1,25 @@
+{
+  "result": {
+    "item": "mobsonyourterms:mobspawningstaff"
+  },
+  "pattern": [
+    " d ",
+    "dld",
+    " s "
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "d": {
+      "type": "forge:ore_dict",
+      "ore": "gemDiamond"
+    },
+    "l": {
+      "type": "forge:ore_dict",
+      "ore": "gemLapis"
+    },
+    "s": {
+      "type": "forge:ore_dict",
+      "ore": "stickWood"
+    }
+  }
+}
