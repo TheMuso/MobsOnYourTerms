@@ -116,7 +116,7 @@ public class ConfigurationHandler
 
 		for (EntityEntry entry : ForgeRegistries.ENTITIES)
 		{
-			String mob = entry.getName();
+			String mob = entry.getRegistryName().toString();
 			if (!MobList.mobList.containsKey((String)mob))
 			{
 				mobClass = entry.getEntityClass();
