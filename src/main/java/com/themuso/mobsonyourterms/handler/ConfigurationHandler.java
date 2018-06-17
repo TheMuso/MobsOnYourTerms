@@ -117,13 +117,14 @@ public class ConfigurationHandler
 		for (EntityEntry entry : ForgeRegistries.ENTITIES)
 		{
 			String mob = entry.getRegistryName().toString();
+			String mobConfigSection = entry.getRegistryName().getResourceDomain() + "." + entry.getRegistryName().getResourcePath();
 			if (!MobList.mobList.containsKey((String)mob))
 			{
 				mobClass = entry.getEntityClass();
 
 				if (entityImplementsIMob((Class)mobClass))
 				{
-					mobConfig = populateConfig((String)mob, Settings.extraMobDefaultConfig);
+					mobConfig = populateConfig(mobConfigSection, Settings.extraMobDefaultConfig);
 					MobList.mobList.put((String)mob, mobConfig);
 				}
 			}
