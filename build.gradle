@@ -25,8 +25,8 @@ group= "com.themuso.mobsonyourterms" // http://maven.apache.org/guides/mini/guid
 archivesBaseName = "MobsOnYourTerms"
 
 minecraft {
-    version = "1.12.2-14.23.4.2705"
-    mappings = "snapshot_20180504"
+    version = "1.12.2-14.23.4.2725"
+    mappings = "snapshot_20180704"
     runDir = "run"
 }
 
