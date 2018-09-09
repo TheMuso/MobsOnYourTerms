@@ -27,6 +27,7 @@ public class MobsOnYourTerms
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
+		LogHelper.init(event.getModLog());
 		VanillaMobSettings.initDefaults();
 		ConfigurationHandler.init(event.getSuggestedConfigurationFile());
 
