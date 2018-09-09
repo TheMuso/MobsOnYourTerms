@@ -7,40 +7,40 @@ import com.themuso.mobsonyourterms.reference.Reference;
 
 public final class LogHelper
 {
-    private static Logger logger;
+	private static Logger logger;
 
-    public static void init(Logger modLogger)
-    {
-        logger = modLogger;
-    }
+	public static void init(Logger modLogger)
+	{
+		logger = modLogger;
+	}
 
-    public static void debug(Object object)
-    {
-        logger.debug(object);
-    }
+	public static void debug(Object object)
+	{
+		logger.debug(object);
+	}
 
-    public static void error(Object object)
-    {
-        logger.error(object);
-    }
+	public static void error(Object object)
+	{
+		logger.error(object);
+	}
 
-    public static void fatal(Object object)
-    {
-        logger.fatal(object);
-    }
+	public static void fatal(Object object)
+	{
+		logger.fatal(object);
+	}
 
-    public static void info(Object object)
-    {
-        logger.info(object);
-    }
+	public static void info(Object object)
+	{
+		logger.info(object);
+	}
 
-    public static void trace(Object object)
-    {
-        logger.trace(object);
-    }
+	public static void trace(Object object)
+	{
+		logger.trace(object);
+	}
 
-    public static void warn(Object object)
-    {
-        logger.warn(object);
-    }
+	public static void warn(Object object)
+	{
+		logger.warn(object);
+	}
 }
