@@ -23,7 +23,7 @@ public class RuleHandler
 			Block block = event.getWorld().getBlockState(event.getPos()).getBlock();
 			String blockName = block.getUnlocalizedName();
 
-			if (blockName.equals("tile.extrautils:cursedearthside"))
+			if (blockName.equals("tile.extrautils2:cursedearth"))
 			{
 				event.setCanceled(false);
 			}
