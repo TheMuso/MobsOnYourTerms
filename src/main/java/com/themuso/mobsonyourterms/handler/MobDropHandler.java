@@ -62,7 +62,6 @@ public class MobDropHandler
 
 		if (!EntityNBTHelper.getBoolean(mob, Names.NBTTags.MOB_SPAWNED_WITH_STAFF))
 		{
-			player.sendMessage(new TextComponentString("Cannot find a mob to spawn."));
 			return;
 		}
 
